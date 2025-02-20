@@ -65,11 +65,7 @@ jobs:
       - name: Update Version in build.gradle
         run: sed -i "s/version = '$VERSION'/version = '$NEW_VERSION'/" build.gradle
 
-      # Step 9: Generate OpenAPI documentation
-      - name: Generate OpenAPI Documentation
-        run: ./gradlew openApiGenerate
-
-      # Step 10: Commit and push the new version
+      # Step 9: Commit and push the new version
       - name: Commit and Push Version Update
         run: |
           git config --global user.name "${{ secrets.USER_NAME }}"
@@ -78,14 +74,14 @@ jobs:
           git commit -m "Bump version to $NEW_VERSION"
           git push
 
-      # Step 11: Create a signed Git tag for the new release
+      # Step 10: Create a signed Git tag for the new release
       - name: Create Git Tag
         run: git tag -a "v${{ env.NEW_VERSION }}" -m "Release v${{ env.NEW_VERSION }}"
 
       - name: Push Git Tag
         run: git push origin "v${{ env.NEW_VERSION }}"
 
-      # Step 12: Update the CHANGELOG automatically
+      # Step 11: Update the CHANGELOG automatically
       - name: Update CHANGELOG
         id: changelog
         uses: Requarks/changelog-action@v1
@@ -95,7 +91,7 @@ jobs:
           writeToFile: true
           excludeTypes: chore, perf
 
-      # Step 13: Create a GitHub Release
+      # Step 12: Create a GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
