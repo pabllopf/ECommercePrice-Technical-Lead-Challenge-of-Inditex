@@ -1,0 +1,10 @@
+# Dependabot configuration file for version updates
+version: 2
+updates:
+  - package-ecosystem: "nuget" # Ecosystem for C#
+    directory: "/" # Root directory or adjust to where your .csproj files are located
+    schedule:
+      interval: "weekly" # Frequency of updates (daily, weekly, or monthly)
+    commit-message:
+      prefix: "deps" # Prefix for the commit messages
+      include: "scope" # Include dependency scope in the commit message
