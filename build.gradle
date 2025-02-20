@@ -21,6 +21,7 @@ sonar {
         property "sonar.projectKey", "pabllopf_ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group"
         property "sonar.organization", "pabllopf"
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", System.getenv("SONAR_TOKEN")
     }
 }
 
