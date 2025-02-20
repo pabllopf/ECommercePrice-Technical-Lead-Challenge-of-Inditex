@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'dev.pabllopf'
-version = '1'
+version = 'v0.0.0'
 
 java {
     toolchain {
