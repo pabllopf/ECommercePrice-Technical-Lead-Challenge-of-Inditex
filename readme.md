@@ -2,6 +2,45 @@
 
 **ECommercePriceAPI** is a Spring Boot-based application that exposes a RESTful endpoint for querying product prices based on specific date and brand information. This project aims to demonstrate the ability to handle dynamic price retrieval based on time intervals and priority rules using an in-memory H2 database.
 
+## How to Test and Use the Inditex Ecommerce Price Engine API
+
+### Introduction
+The Inditex Ecommerce Price Engine API allows you to interact with the pricing data of products available on the Inditex e-commerce platform. To access and test the API, you can use the Swagger UI interface, which provides an interactive documentation and testing environment for the API.
+
+### How to Access the API
+
+1. Open your web browser and navigate to the Swagger UI documentation at:  
+   [Inditex Ecommerce Price Engine Swagger UI](https://inditex-bcnc-ecommerce-price-engine.onrender.com/swagger-ui/index.html)
+
+2. Once you open the link, you will see the interactive interface of the API. It includes a list of all available endpoints and their descriptions.
+
+### How to Test the API
+
+1. **Explore Available Endpoints:**
+   The Swagger UI will list all the API endpoints along with their HTTP methods (GET, POST, etc.). You can expand each endpoint to view additional details, including request parameters and response formats.
+
+2. **Test an Endpoint:**
+   - Select the endpoint you want to test from the list.
+   - Click on the “Try it out” button to enable input fields.
+   - Enter the required parameters for the request (if any).
+   - Click on the “Execute” button to send the request.
+   - The response will be displayed below, showing the returned data, status code, and any errors that may have occurred.
+
+3. **View Response:**
+   After executing a request, you will be able to see the API response directly in the Swagger UI. This includes the response body (JSON or XML), headers, and the status code indicating the success or failure of the request.
+
+### Platform Used to Deploy
+
+The Inditex Ecommerce Price Engine API is deployed on Render, a platform for deploying web applications and APIs. Render allows easy deployment and scaling of applications with support for various backends, including Node.js, Python, and others.
+
+You can learn more about the platform by visiting the Render dashboard at:  
+[Render Dashboard](https://dashboard.render.com)
+
+### Conclusion
+Using Swagger UI is an intuitive way to explore and test the API without needing to write code. It allows you to interact with the API, test different endpoints, and view the results in real-time.
+
+
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
