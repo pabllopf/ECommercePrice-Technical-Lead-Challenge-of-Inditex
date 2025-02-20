@@ -4,6 +4,9 @@ RUN apt-get update
 RUN apt-get install openjdk-21-jdk -y
 COPY . .
 
+# Asegúrate de que gradlew tenga permisos de ejecución
+RUN chmod +x gradlew
+
 RUN ./gradlew bootJar --no-daemon
 
 FROM openjdk:21-jdk-slim
