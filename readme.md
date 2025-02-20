@@ -42,7 +42,7 @@ Example data provided in the database:
 - **H2 Database**: In-memory database for storing price data.
 - **JUnit & Mockito**: For unit testing and mocking dependencies.
 - **Jacoco**: For code coverage reporting.
-- **Maven**: For project management and dependencies.
+- **Gradle**: For project management and dependencies.
 - **Lombok**: To reduce boilerplate code (getters, setters, constructors, etc.).
 - **ControllerAdvice**: For centralized exception handling.
 
@@ -62,7 +62,6 @@ The application follows the **Hexagonal Architecture** with a clear separation o
 |  Controller      | -----> |  Service Layer  | -----> |  Repository Layer  |
 |  (REST API)      |         |  (Business Logic)|         |  (Database Access) |
 +------------------+         +-----------------+         +--------------------+
-                              
 ```
 
 ## API Documentation
@@ -116,7 +115,7 @@ Example Response:
 
 ### Prerequisites
 - Java 11 or higher
-- Maven
+- Gradle
 - IDE (e.g., IntelliJ IDEA or Eclipse)
 
 ### Steps
@@ -132,15 +131,15 @@ Example Response:
 
 3. Build and run the application:
     ```bash
-    mvn spring-boot:run
+    gradle bootRun
     ```
 
 4. The application should be running at `http://localhost:8080`.
 
 ### Running Tests
-To run the tests, use the following Maven command:
+To run the tests, use the following Gradle command:
 ```bash
-mvn test
+gradle test
 ```
 
 ## CI/CD
@@ -149,7 +148,7 @@ This project includes CI/CD integration to ensure automated builds and tests. Th
 
 ### Example Workflow (GitHub Actions)
 ```yaml
-name: Java CI with Maven
+name: Java CI with Gradle
 
 on:
   push:
@@ -173,11 +172,11 @@ jobs:
         java-version: '11'
         distribution: 'adoptopenjdk'
 
-    - name: Build with Maven
-      run: mvn clean install
+    - name: Build with Gradle
+      run: gradle clean build
 
     - name: Run Tests
-      run: mvn test
+      run: gradle test
 ```
 
 ## Contributing
@@ -187,3 +186,9 @@ Feel free to fork the repository and submit issues or pull requests. Ensure you 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Live Deployment
+- [Swagger UI](https://inditex-bcnc-ecommerce-price-engine.onrender.com/swagger-ui/index.html)
+- [H2 Database Console](https://inditex-bcnc-ecommerce-price-engine.onrender.com/h2-console)
+- [API Documentation](https://inditex-bcnc-ecommerce-price-engine.onrender.com/v3/api-docs)
+- [SonarCloud Project](https://sonarcloud.io/project/information?id=pabllopf_ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group)
