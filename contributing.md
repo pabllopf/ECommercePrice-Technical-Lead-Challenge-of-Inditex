@@ -1,7 +1,6 @@
-# Contributing to Alis
+# Contributing to ECommercePrice
 
-Thank you for your interest in contributing to Alis! Your contributions help make this project better for everyone. Whether you're fixing bugs, adding new features, improving documentation, or helping out in any other way, we're excited to have you on board.
-
+Thank you for your interest in contributing to **ECommercePrice**! Your contributions help improve this project and make it better for everyone. Whether you're fixing bugs, adding new features, improving documentation, or helping in any other way, we’re excited to have you on board.
 
 ## Table of Contents
 
@@ -27,7 +26,7 @@ By participating in this project, you agree to abide by the [Code of Conduct](CO
 
 ### Reporting Bugs
 
-If you find a bug in the project, please open an issue on our [GitHub Issues](https://github.com/username/alis/issues) page. When reporting a bug, include:
+If you find a bug in the project, please open an issue on our [GitHub Issues](https://github.com/username/ecommerceprice/issues) page. When reporting a bug, include:
 
 - A clear and descriptive title.
 - Steps to reproduce the issue.
@@ -36,7 +35,7 @@ If you find a bug in the project, please open an issue on our [GitHub Issues](ht
 
 ### Suggesting Features
 
-We welcome feature requests! To suggest a new feature, please open an issue on our [GitHub Issues](https://github.com/username/alis/issues) page. Provide a detailed explanation of the feature, its potential benefits, and any examples or mockups that might help illustrate your idea.
+We welcome feature requests! To suggest a new feature, please open an issue on our [GitHub Issues](https://github.com/username/ecommerceprice/issues) page. Provide a detailed explanation of the feature, its potential benefits, and any examples or mockups that might help illustrate your idea.
 
 ### Submitting Changes
 
@@ -54,14 +53,55 @@ Please ensure that your pull request:
 - References any related issues.
 - Includes relevant tests and documentation updates.
 
+## Development Process
+
+### Setting Up the Environment
+
+To set up your local development environment, ensure you have:
+
+- **Java 21** with **Spring Boot 3.4.2**.
+- **Maven** (for dependency management and build tasks).
+- **JDK 21**.
+- **PostgreSQL** or **H2** for your local database.
+- **IDE** (IntelliJ IDEA or Eclipse for Spring Boot).
+
+Clone the repository and run the following command to build the project:
+
+```bash
+git clone https://github.com/username/ecommerceprice.git
+cd ecommerceprice
+./mvnw clean install
+```
+
+### Building the Project
+
+To build the project, use:
+
+```bash
+./mvnw clean package
+```
+
+This will compile the code and package the application for deployment.
+
+### Running Tests
+
+To run the unit tests, use:
+
+```bash
+./mvnw test
+```
+
+This will execute all unit tests and generate reports for the results.
+
 ## Style Guides
 
 ### Coding Standards
 
 Adhere to the following coding standards to maintain code quality and readability:
 
-- Follow the language-specific style guides (e.g., PEP 8 for Python, ESLint for JavaScript).
-- Write clear, concise, and well-documented code.
+- **Java conventions** as per the [Oracle Java Coding Guidelines](https://www.oracle.com/java/technologies/javase/codeconventions-150003.pdf).
+- Use **Spring Framework** best practices for controllers, services, and repositories.
+- Write clean, concise, and well-documented code.
 - Include comments where necessary to explain complex logic.
 
 ### Commit Messages
@@ -69,14 +109,12 @@ Adhere to the following coding standards to maintain code quality and readabilit
 Write meaningful commit messages to make the history easier to understand:
 
 - Use the present tense ("Add feature" not "Added feature").
-- Use the imperative mood ("Move cursor to..." not "Moves cursor to...").
+- Use the imperative mood ("Fix bug in order processing" not "Fixes bug in order processing").
 - Include a brief summary of the changes made.
 - Reference issues and pull requests when applicable (e.g., `Fixes #123`).
 
 ## Acknowledgments
 
-We appreciate your contributions! If your pull request is merged, you will be listed as a contributor in the project's [Contributors](https://github.com/username/alis/graphs/contributors) section.
+We appreciate your contributions! If your pull request is merged, you will be listed as a contributor in the project's [Contributors](https://github.com/username/ecommerceprice/graphs/contributors) section.
 
-Thank you for helping make Alis better for everyone!
-
----
+Thank you for helping make **ECommercePrice** better for everyone!

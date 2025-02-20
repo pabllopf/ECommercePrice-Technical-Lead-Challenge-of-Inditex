@@ -4,45 +4,20 @@
 
 The following are the compatible versions (target frameworks) of the project that are supported with security updates:
 
-- **.NET:**
-  - `net5.0`, `net5.0-windows`
-  - `net6.0`, `net6.0-android`, `net6.0-ios`, `net6.0-maccatalyst`, `net6.0-macos`, `net6.0-tvos`, `net6.0-windows`
-  - `net7.0`, `net7.0-android`, `net7.0-ios`, `net7.0-maccatalyst`, `net7.0-macos`, `net7.0-tvos`, `net7.0-windows`
-  - `net8.0`, `net8.0-android`, `net8.0-browser`, `net8.0-ios`, `net8.0-maccatalyst`, `net8.0-macos`, `net8.0-tvos`, `net8.0-windows`
+- **Java:**
+  - `Java 21` (LTS)
 
-- **.NET Core:**
-  - `netcoreapp2.0`, `netcoreapp2.1`, `netcoreapp2.2`
-  - `netcoreapp3.0`, `netcoreapp3.1`
+- **Spring Boot:**
+  - `Spring Boot 3.4.2`
 
-- **.NET Standard:**
-  - `netstandard2.0`, `netstandard2.1`
+- **Spring Security:**
+  - `Spring Security 6.x`
 
-- **.NET Framework:**
-  - `net461`, `net462`, `net463`, `net47`, `net471`, `net472`, `net48`, `net481`
+- **Spring Data JPA:**
+  - `Spring Data JPA 3.x`
 
-- **MonoAndroid:**
-  - `monoandroid`
-
-- **MonoMac:**
-  - `monomac`
-
-- **MonoTouch:**
-  - `monotouch`
-
-- **Tizen:**
-  - `tizen40`, `tizen60`
-
-- **Xamarin.iOS:**
-  - `xamarinios`
-
-- **Xamarin.Mac:**
-  - `xamarinmac`
-
-- **Xamarin.TVOS:**
-  - `xamarintvos`
-
-- **Xamarin.WatchOS:**
-  - `xamarinwatchos`
+- **OpenAPI:**
+  - `springdoc-openapi-starter-webmvc-ui 2.x`
 
 ## Reporting a Vulnerability
 
@@ -67,7 +42,7 @@ If you discover a security vulnerability in this project, please follow these st
 
 - **Code Review:** All code changes, especially those affecting security, are reviewed by multiple team members to ensure adherence to security best practices.
 - **Testing:** We use automated and manual testing to identify vulnerabilities. Security-related tests are included in our continuous integration pipeline.
-- **Dependencies:** We regularly update and audit our dependencies to address known vulnerabilities in third-party libraries.
+- **Dependencies:** We regularly update and audit our dependencies to address known vulnerabilities in third-party libraries. This includes libraries like `Spring Boot`, `Spring Security`, `jjwt`, and others.
 
 ## Known Vulnerabilities
 
