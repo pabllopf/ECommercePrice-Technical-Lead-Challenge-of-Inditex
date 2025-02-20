@@ -19,6 +19,7 @@ public interface PriceRepositoryPort extends JpaRepository<PriceEntity, Long>, I
             "AND p.productId = :productId " +
             "AND :date BETWEEN p.startDate AND p.endDate " +
             "ORDER BY p.priority DESC LIMIT 1")
+
     Optional<PriceEntity> findApplicablePriceEntity(@Param("brandId") Integer brandId,
                                                     @Param("productId") Integer productId,
                                                     @Param("date") LocalDateTime date);
