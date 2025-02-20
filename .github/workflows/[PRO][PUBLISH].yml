@@ -123,3 +123,33 @@ jobs:
           append_body: true
           files: |
             build/libs/*.jar  # Upload built JAR file
+
+      - name: git fetch
+        run: git fetch
+
+      - name: git checkout master
+        run: git checkout master
+
+      - name: git pull
+        run: git pull
+
+      - name: git add .
+        run: git add .
+
+      - name: git commit -S -m "Create the packages of version '$VERSIONFINAL'."
+        run: git commit -S -m "Create the packages of version '$VERSIONFINAL'."
+        env:
+          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
+
+      - name: git push
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
