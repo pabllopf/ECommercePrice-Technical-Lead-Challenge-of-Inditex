@@ -1,17 +1,20 @@
-# Discover vulnerabilities of code.
+# Discover vulnerabilities of code and manage stale issues
 name: "[PRO][CHECK][ISSUES]"
+
 on:
+  # Schedule the workflow to run daily at 01:30 UTC
   schedule:
     - cron: '30 1 * * *'
+
 jobs:
   stale:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/stale@v9
+      # Step 1: Run the stale action to mark inactive issues
+      - name: "🕒 Mark and Close Stale Issues"
+        uses: actions/stale@v9
         with:
-          stale-issue-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
-          days-before-stale: 30
-          days-before-close: 5
-
-
-
+          stale-issue-message: "This issue is stale because it has been open for 30 days with no activity. Remove the stale label or comment, or it will be closed in 5 days."
+          days-before-stale: 30  # Mark issues as stale after 30 days of inactivity
+          days-before-close: 5  # Close stale issues after 5 additional days

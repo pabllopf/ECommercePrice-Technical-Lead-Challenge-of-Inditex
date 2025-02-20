@@ -1,17 +1,24 @@
 name: "[PRO][DEPENDENCY][REVIEW]"
-on: [ pull_request ]
+
+on:
+  # Trigger the workflow on every pull request
+  pull_request:
 
 permissions:
+  # Grant read-only access to repository contents
   contents: read
 
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 'Checkout Repository'
+      # Step 1: Checkout the repository code from the master branch
+      - name: '📥 Checkout Repository'
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: master  # Ensures the master branch is checked out
 
-      - name: 'Dependency Review'
+      # Step 2: Perform a dependency review to check for security vulnerabilities
+      - name: '🔍 Dependency Review'
         uses: actions/dependency-review-action@v4
