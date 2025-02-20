@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("prices")
+@RequestMapping("api/prices")
 @Tag(name = "Prices", description = "Endpoints for retrieving product prices")
 public class PriceController {
 
