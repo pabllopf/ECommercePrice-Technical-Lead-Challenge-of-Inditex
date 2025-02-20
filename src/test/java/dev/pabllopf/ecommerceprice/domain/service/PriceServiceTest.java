@@ -1,14 +1,14 @@
 package dev.pabllopf.ecommerceprice.domain.service;
 
+import dev.pabllopf.ecommerceprice.application.services.price.PriceService;
 import dev.pabllopf.ecommerceprice.domain.model.Price;
-import dev.pabllopf.ecommerceprice.domain.repository.IPriceRepository;
+import dev.pabllopf.ecommerceprice.domain.ports.out.IPriceRepositoryPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 class PriceServiceTest {
 
     @Mock
-    private IPriceRepository priceRepository;
+    private IPriceRepositoryPort priceRepository;
 
     @InjectMocks
     private PriceService priceService;

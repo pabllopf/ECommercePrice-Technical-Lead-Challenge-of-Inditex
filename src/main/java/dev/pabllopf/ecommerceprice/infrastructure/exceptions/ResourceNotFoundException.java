@@ -1,4 +1,4 @@
-package dev.pabllopf.ecommerceprice.infrastructure.exception;
+package dev.pabllopf.ecommerceprice.infrastructure.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

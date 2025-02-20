@@ -1,4 +1,4 @@
-package dev.pabllopf.ecommerceprice.infrastructure.exception;
+package dev.pabllopf.ecommerceprice.infrastructure.exceptions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

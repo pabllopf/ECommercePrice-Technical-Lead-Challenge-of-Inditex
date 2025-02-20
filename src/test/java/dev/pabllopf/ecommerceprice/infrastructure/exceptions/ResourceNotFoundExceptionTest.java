@@ -1,4 +1,4 @@
-package dev.pabllopf.ecommerceprice.infrastructure.exception;
+package dev.pabllopf.ecommerceprice.infrastructure.exceptions;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;

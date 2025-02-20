@@ -1,6 +1,6 @@
-package dev.pabllopf.ecommerceprice.infrastructure.controller;
+package dev.pabllopf.ecommerceprice.infrastructure.controllers;
 
-import dev.pabllopf.ecommerceprice.domain.service.PriceService;
+import dev.pabllopf.ecommerceprice.application.services.price.PriceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
