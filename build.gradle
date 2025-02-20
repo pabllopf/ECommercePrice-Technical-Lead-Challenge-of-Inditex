@@ -16,7 +16,6 @@ java {
     }
 }
 
-
 sonar {
     properties {
         property "sonar.projectKey", "pabllopf_ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group"
