@@ -54,32 +54,6 @@ Please ensure that your pull request:
 - References any related issues.
 - Includes relevant tests and documentation updates.
 
-## Development Process
-
-### Setting Up the Environment
-
-To set up your development environment, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/pabllopf/Alis.git`
-2. Navigate to the project directory: `cd alis`
-3. Install dependencies: `dotnet restore`
-
-### Building the Project
-
-Instructions for building the project will vary depending on the technology stack. Ensure you have the necessary tools installed, such as Node.js, Python, etc.
-
-```cs
-dotnet build alis.sln
-```
-
-### Running Tests
-
-Run the project’s tests to ensure your changes don’t break anything:
-
-```cs
-dotnet test alis.sln
-```
-
 ## Style Guides
 
 ### Coding Standards
