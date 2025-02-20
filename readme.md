@@ -2,9 +2,10 @@
 
 **ECommercePriceAPI** is a Spring Boot-based application that exposes a RESTful endpoint for querying product prices based on specific date and brand information. This project aims to demonstrate the ability to handle dynamic price retrieval based on time intervals and priority rules using an in-memory H2 database.
 
-> **Warning:**
-> It's normal that the service might not be active immediately, and you may encounter a **502 Bad Gateway** error. If this happens, please wait up to 3 minutes for the service to automatically restart. This occurs because Render's free tier deactivates services that haven't been used for 15 minutes. After this period, the service should automatically come back online.
-
+<div style="background-color: yellow; padding: 10px; border-radius: 5px;">
+  <strong>Warning:</strong><br>
+  It's normal that the service might not be active immediately, and you may encounter a <strong>502 Bad Gateway</strong> error. If this happens, please wait up to 3 minutes for the service to automatically restart. This occurs because Render's free tier deactivates services that haven't been used for 15 minutes. After this period, the service should automatically come back online.
+</div>
 
 ## How to Test and Use the Inditex Ecommerce Price Engine API
 
