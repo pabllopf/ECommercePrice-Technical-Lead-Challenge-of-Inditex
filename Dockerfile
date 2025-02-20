@@ -1,27 +1,27 @@
-﻿# Etapa de construcción (Build Stage)
+﻿# Etapa de construcción
 FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 
-# Copiar archivos del proyecto
-COPY build.gradle settings.gradle ./
-COPY gradlew gradlew
+# Copiar archivos Gradle
+COPY build.gradle settings.gradle gradlew ./
 COPY gradle ./gradle
 COPY src ./src
 
-# Descargar dependencias y compilar el proyecto
+# Dar permisos y compilar la aplicación
 RUN chmod +x gradlew
 RUN ./gradlew clean build -x test
 
-# Etapa final (Runtime Stage)
+# Etapa final (Runtime)
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
 VOLUME /tmp
 
-# Copiar el JAR generado en la etapa de construcción
-COPY --from=build /app/build/libs/*.jar app.jar
+# Copiar el JAR de manera segura
+RUN mkdir -p /app/build/libs
+COPY --from=build /app/build/libs/*.jar /app/app.jar
 
-# Exponer el puerto 8080 para el servidor de Spring Boot
+# Exponer el puerto
 EXPOSE 8080
 
-# Comando de inicio de la aplicación
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Iniciar la aplicación
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
