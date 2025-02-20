@@ -18,6 +18,7 @@ Thank you for your interest in contributing to **ECommercePrice**! Your contribu
    - [Commit Messages](#commit-messages)
 5. [Acknowledgments](#acknowledgments)
 
+
 ## Code of Conduct
 
 By participating in this project, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md). Please read it to understand the expectations we have for all contributors.
