@@ -1,0 +1,109 @@
+# Workflow to automate Java 21, Spring Boot, Gradle, and OpenAPI release process
+name: "[PRO][PUBLISH]"
+
+on:
+  push:
+    branches: [ master ] # Trigger only on pushes to the master branch
+
+jobs:
+  Create_Release:
+    if: "startsWith(github.event.head_commit.message, 'release:')" # Only run if commit message starts with "release:"
+    runs-on: ubuntu-latest # Use latest Ubuntu runner
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      # Step 2: Set up Java 21 and Gradle
+      - name: Set up Java 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # Use Eclipse Temurin JDK
+          java-version: '21'
+          cache: 'gradle' # Cache Gradle dependencies
+
+      # Step 3: Verify Java version
+      - name: Check Java Version
+        run: java -version
+
+      # Step 4: Grant execute permissions to Gradle wrapper
+      - name: Grant Execute Permissions to Gradle Wrapper
+        run: chmod +x gradlew
+
+      # Step 5: Install dependencies and build the project
+      - name: Build Project
+        run: ./gradlew clean build
+
+      # Step 6: Extract current version from build.gradle or version.properties
+      - name: Get Current Version
+        run: echo "VERSION=$(./gradlew properties | grep "version:" | awk '{print $2}')" >> $GITHUB_ENV
+
+      - name: Print Current Version
+        run: |
+          echo "Current version: $VERSION"
+
+      # Step 7: Increment version number
+      - name: Increment Version
+        run: |
+          MAJOR=$(echo $VERSION | cut -d. -f1)
+          MINOR=$(echo $VERSION | cut -d. -f2)
+          PATCH=$(echo $VERSION | cut -d. -f3)
+          PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Print New Version
+        run: |
+          echo "Current version: $VERSION"
+
+      # Step 8: Update version in build.gradle
+      - name: Update Version in build.gradle
+        run: sed -i "s/version = '$VERSION'/version = '$NEW_VERSION'/" build.gradle
+
+      # Step 9: Generate OpenAPI documentation
+      - name: Generate OpenAPI Documentation
+        run: ./gradlew openApiGenerate
+
+      # Step 10: Commit and push the new version
+      - name: Commit and Push Version Update
+        run: |
+          git config --global user.name "${{ secrets.USER_NAME }}"
+          git config --global user.email "${{ secrets.USER_EMAIL }}"
+          git add build.gradle
+          git commit -m "Bump version to $NEW_VERSION"
+          git push
+
+      # Step 11: Create a signed Git tag for the new release
+      - name: Create Git Tag
+        run: git tag -a "v${{ env.NEW_VERSION }}" -m "Release v${{ env.NEW_VERSION }}"
+
+      - name: Push Git Tag
+        run: git push origin "v${{ env.NEW_VERSION }}"
+
+      # Step 12: Update the CHANGELOG automatically
+      - name: Update CHANGELOG
+        id: changelog
+        uses: Requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: "v${{ env.NEW_VERSION }}"
+          writeToFile: true
+          excludeTypes: chore, perf
+
+      # Step 13: Create a GitHub Release
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: ${{ steps.changelog.outputs.changes }}
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          name: "Release v${{ env.NEW_VERSION }}"
+          tag_name: "v${{ env.NEW_VERSION }}"
+          generate_release_notes: true
+          append_body: true
+          files: |
+            build/libs/*.jar # Upload built JAR file
