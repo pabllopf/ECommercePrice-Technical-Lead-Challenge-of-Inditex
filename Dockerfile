@@ -4,11 +4,12 @@ WORKDIR /app
 
 # Copiar archivos del proyecto
 COPY build.gradle settings.gradle ./
+COPY gradlew gradlew   # 👈 Agregar esta línea
 COPY gradle ./gradle
 COPY src ./src
 
 # Descargar dependencias y compilar el proyecto
-RUN chmod +x ./gradlew
+RUN chmod +x gradlew  # 👈 Eliminar el "./"
 RUN ./gradlew clean build -x test
 
 # Etapa final (Runtime Stage)
