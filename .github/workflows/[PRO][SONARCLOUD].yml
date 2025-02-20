@@ -42,7 +42,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      # Step 5: Build the project and run SonarQube analysis
+      # Step 5: Grant execute permissions to the Gradle Wrapper
+      - name: 🚀 Grant execute permissions to Gradle Wrapper
+        run: chmod +x gradlew
+
+      # Step 6: Build the project and run SonarQube analysis
       - name: 📊 Build and analyze with SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # SonarQube authentication token from GitHub Secrets
