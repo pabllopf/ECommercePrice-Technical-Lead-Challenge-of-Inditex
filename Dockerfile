@@ -1,22 +1,26 @@
-﻿# Importing JDK and copying required files
-FROM openjdk:21-jdk AS build
+﻿# Etapa de construcción (Build Stage)
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src src
 
-# Copy Maven wrapper
-COPY mvnw .
-COPY .mvn .mvn
+# Copiar archivos del proyecto
+COPY build.gradle settings.gradle ./
+COPY gradle ./gradle
+COPY src ./src
 
-# Set execution permission for the Maven wrapper
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
+# Descargar dependencias y compilar el proyecto
+RUN chmod +x ./gradlew
+RUN ./gradlew clean build -x test
 
-# Stage 2: Create the final Docker image using OpenJDK 19
-FROM openjdk:19-jdk
+# Etapa final (Runtime Stage)
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
 VOLUME /tmp
 
-# Copy the JAR from the build stage
-COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Copiar el JAR generado en la etapa de construcción
+COPY --from=build /app/build/libs/*.jar app.jar
+
+# Exponer el puerto 8080 para el servidor de Spring Boot
 EXPOSE 8080
+
+# Comando de inicio de la aplicación
+ENTRYPOINT ["java", "-jar", "/app.jar"]
