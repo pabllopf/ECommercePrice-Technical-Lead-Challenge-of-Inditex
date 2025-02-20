@@ -1,19 +1,22 @@
-﻿FROM ubuntu:latest
-LABEL authors="ES42250209Z"
-
-ENTRYPOINT ["top", "-b"]
-
-# Usa una imagen base de OpenJDK con Java 21
-FROM eclipse-temurin:21-jdk
-
-# Establece el directorio de trabajo dentro del contenedor
+﻿# Importing JDK and copying required files
+FROM openjdk:21-jdk AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src src
 
-# Copia el archivo JAR del proyecto al contenedor
-COPY target/*.jar app.jar
+# Copy Maven wrapper
+COPY mvnw .
+COPY .mvn .mvn
 
-# Expone el puerto en el que correrá la aplicación (por defecto 8080 en Spring Boot)
+# Set execution permission for the Maven wrapper
+RUN chmod +x ./mvnw
+RUN ./mvnw clean package -DskipTests
+
+# Stage 2: Create the final Docker image using OpenJDK 19
+FROM openjdk:19-jdk
+VOLUME /tmp
+
+# Copy the JAR from the build stage
+COPY --from=build /app/target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
-
-# Comando para ejecutar la aplicación
-ENTRYPOINT ["java", "-jar", "app.jar"]
