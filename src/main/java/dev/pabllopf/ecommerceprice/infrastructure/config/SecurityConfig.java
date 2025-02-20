@@ -26,8 +26,8 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/auth/login",
-                                "/swagger-ui/**",
+                                "api/auth/login",
+                                "swagger-ui/**",
                                 "/h2-console/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html"

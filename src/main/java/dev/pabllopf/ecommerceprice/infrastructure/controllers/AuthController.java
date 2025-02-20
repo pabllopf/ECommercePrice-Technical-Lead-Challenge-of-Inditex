@@ -19,7 +19,7 @@ public class AuthController {
     private static final String VALID_USERNAME = "user";
     private static final String VALID_PASSWORD = "password";
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         // Validate credentials (in real-world use a service to verify against a database)
         if (VALID_USERNAME.equals(loginRequest.getUsername()) && VALID_PASSWORD.equals(loginRequest.getPassword())) {
