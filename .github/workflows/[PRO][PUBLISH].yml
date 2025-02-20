@@ -98,23 +98,29 @@ jobs:
           GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
 
+      # Step 10: Update CHANGELOG
       - name: Update CHANGELOG
         id: changelog
         uses: Requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: "v${{ env.VERSIONFINAL }}"
+          tag: "v${{ env.NEW_VERSION }}"  # Correctly use the incremented version
           writeToFile: true
           excludeTypes: chore, perf
-
-      # Step 14: Create a GitHub release
+          changelogFilePath: changelog.md
+          includeRefIssues: true
+          useGitmojis: true
+          includeInvalidCommits: false
+          reverseOrder: false
+      
+      # Step 11: Create a GitHub release
       - uses: softprops/action-gh-release@v2
         with:
           body: ${{ steps.changelog.outputs.changes }}
           token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
-          tag_name: "v${{ env.VERSIONFINAL }}"
+          name: "v${{ env.NEW_VERSION }} has arrived !!!"
+          tag_name: "v${{ env.NEW_VERSION }}"
           generate_release_notes: true
           append_body: true
           files: |
