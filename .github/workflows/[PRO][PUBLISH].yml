@@ -55,20 +55,21 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "Incremented version: $NEW_VERSION"  # Traza añadida para ver el valor de NEW_VERSION
 
-      # Step 8: Update the version in build.gradle
-      - name: Update Version in build.gradle
-        run: |
-          echo "Updating build.gradle with version $NEW_VERSION"
-          sed -i "s/version = '$VERSION'/version = '$NEW_VERSION'/" build.gradle
-          echo "Updated build.gradle with new version: $NEW_VERSION"  # Traza añadida para confirmar la actualización
+      - name: git config --global user.name github-actions
+        run: git config --global user.name "${{ secrets.USER_NAME }}"
 
-      # Step 9: Configure git
-      - name: Configure Git
-        run: |
-          git config --global user.name "${{ secrets.USER_NAME }}"
-          git config --global user.email "${{ secrets.USER_EMAIL }}"
+      - name: git config --global user.email github-actions@github.com
+        run: git config --global user.email "${{ secrets.USER_EMAIL }}"
 
-      # Step 10: Import bot's GPG key for signing commits
+      - name: git config user.name
+        run: git config user.name
+
+      - name: git config user.email
+        run: git config user.email
+
+      - name: Find common ancestor
+        run: git merge-base --fork-point origin/master
+
       - name: Import bot's GPG key for signing commits
         id: import-gpg
         uses: crazy-max/ghaction-import-gpg@v6
@@ -79,11 +80,8 @@ jobs:
           git_user_signingkey: true
           git_commit_gpgsign: true
 
-      # Step 11: Create a Git tag with the new version
-      - name: Create Git tag for release
-        run: |
-          echo "Creating tag v${{ env.NEW_VERSION }}"
-          git tag -s "v${{ env.NEW_VERSION }}" -m "Release v${{ env.NEW_VERSION }}"
+      - name: git tag
+        run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
@@ -91,11 +89,8 @@ jobs:
           GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
 
-      # Step 12: Push the tags
-      - name: Push tags to GitHub
-        run: |
-          echo "Pushing tag v${{ env.NEW_VERSION }} to GitHub"
-          git push --tags
+      - name: git push --tags
+        run: git push --tags
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
@@ -103,11 +98,12 @@ jobs:
           GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
 
-      # Step 13: Update CHANGELOG
-      - uses: Requarks/changelog-action@v1
+      - name: Update CHANGELOG
+        id: changelog
+        uses: Requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: "v${{ env.NEW_VERSION }}"
+          tag: "v${{ env.VERSIONFINAL }}"
           writeToFile: true
           excludeTypes: chore, perf
 
@@ -117,8 +113,8 @@ jobs:
           body: ${{ steps.changelog.outputs.changes }}
           token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          name: "v${{ env.NEW_VERSION }} has arrived!!!"
-          tag_name: "v${{ env.NEW_VERSION }}"
+          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
+          tag_name: "v${{ env.VERSIONFINAL }}"
           generate_release_notes: true
           append_body: true
           files: |
