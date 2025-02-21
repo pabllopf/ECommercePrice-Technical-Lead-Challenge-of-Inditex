@@ -8,6 +8,11 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * PriceEntity represents the database entity for price-related data.
+ * It is mapped to the "prices" table and contains all the necessary fields for a price record.
+ * The class provides conversion methods between the entity and domain model for easier integration in the service layer.
+ */
 @Entity
 @Table(name = "prices")
 @Setter
@@ -42,10 +47,22 @@ public class PriceEntity {
     @Column(name = "currency")
     private String currency;
 
+    /**
+     * Converts this entity to its corresponding domain model.
+     * The domain model is used in the application logic and service layer.
+     *
+     * @return A Price object representing the entity data.
+     */
     public Price toDomain() {
         return new Price(id, brandId, startDate, endDate, priceList, productId, priority, price, currency);
     }
 
+    /**
+     * Converts a domain model (Price) to a PriceEntity for persistence in the database.
+     *
+     * @param price The domain model to be converted.
+     * @return A PriceEntity representing the provided domain model.
+     */
     public static PriceEntity fromDomain(Price price) {
         PriceEntity entity = new PriceEntity();
         entity.setId(price.getId());

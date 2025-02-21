@@ -7,11 +7,8 @@ CREATE TABLE prices (
     end_date TIMESTAMP NOT NULL,
     priority INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    curr VARCHAR(3) NOT NULL
+    curr VARCHAR(3) NOT NULL DEFAULT 'USD'
 );
-
-ALTER TABLE prices ADD COLUMN currency VARCHAR(255) NOT NULL DEFAULT 'USD';
-
 
 INSERT INTO prices (brand_id, product_id, price_list, start_date, end_date, priority, price, curr)
 VALUES

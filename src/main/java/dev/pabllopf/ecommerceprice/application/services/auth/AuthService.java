@@ -1,11 +1,14 @@
-package dev.pabllopf.ecommerceprice.application.services.authentification.usecases;
+package dev.pabllopf.ecommerceprice.application.services.auth;
 
 import dev.pabllopf.ecommerceprice.domain.model.Token;
 import dev.pabllopf.ecommerceprice.domain.ports.in.authentification.ICreateToken;
+import org.springframework.stereotype.Service;
 
-public class CreateToken implements ICreateToken {
+@Service
+public class AuthService implements ICreateToken
+{
     @Override
     public Token createToken(String username, String password) {
-        return new Token("token");
+        return new Token("");
     }
 }

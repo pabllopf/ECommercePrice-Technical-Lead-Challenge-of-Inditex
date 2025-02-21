@@ -36,7 +36,7 @@ public class PriceControllerTest {
     void testGetPrice_WhenPriceNotFound() {
         // Arrange: Simula que el servicio no encuentra el precio
         LocalDateTime dateTime = LocalDateTime.parse(DATE);
-        when(priceService.getPrice(BRAND_ID, PRODUCT_ID, dateTime)).thenReturn(Optional.empty());
+        when(priceService.findApplicablePrice(BRAND_ID, PRODUCT_ID, dateTime)).thenReturn(Optional.empty());
 
         // Act & Assert: Verifica que se lance la excepción correcta
         RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
@@ -67,7 +67,7 @@ public class PriceControllerTest {
     void testGetPrice_WhenPriceServiceThrowsException() {
         // Arrange: Configura el servicio para que lance una excepción
         LocalDateTime dateTime = LocalDateTime.parse(DATE);
-        when(priceService.getPrice(BRAND_ID, PRODUCT_ID, dateTime)).thenThrow(new RuntimeException("Internal Server Error"));
+        when(priceService.findApplicablePrice(BRAND_ID, PRODUCT_ID, dateTime)).thenThrow(new RuntimeException("Internal Server Error"));
 
         // Act & Assert: Verifica que la excepción lanzada es la esperada
         RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
