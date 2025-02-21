@@ -30,17 +30,6 @@ jobs:
       - name: Check Java Version
         run: java -version
 
-      # Step 4: Grant execute permissions to Gradle wrapper
-      - name: Grant Execute Permissions to Gradle Wrapper
-        run: chmod +x gradlew
-
-      # Step 5: Install dependencies and build the project
-      - name: Build Project
-        run: ./gradlew clean build
-
-      - name: Build Project
-        run: ./gradlew bootJar --no-daemon
-
       # Step 6: Extract the current version from build.gradle
       - name: Get Current Version from build.gradle
         run: |
@@ -65,6 +54,17 @@ jobs:
           echo "Updating build.gradle with version $NEW_VERSION"
           sed -i "s/version = '$VERSION'/version = '$NEW_VERSION'/" build.gradle
           echo "Updated build.gradle with new version: $NEW_VERSION"  # Traza añadida para confirmar la actualización
+
+      # Step 4: Grant execute permissions to Gradle wrapper
+      - name: Grant Execute Permissions to Gradle Wrapper
+        run: chmod +x gradlew
+
+      # Step 5: Install dependencies and build the project
+      - name: Build Project
+        run: ./gradlew clean build
+
+      - name: Build Project
+        run: ./gradlew bootJar --no-daemon
 
       # Step 9: Configure git
       - name: Configure Git
