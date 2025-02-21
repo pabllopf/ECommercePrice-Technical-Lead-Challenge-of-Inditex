@@ -1,13 +1,9 @@
 package dev.pabllopf.ecommerceprice.domain.model;
 
-public class Token {
-    private final String token;
-
-    public Token(String token) {
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
-}
+/**
+ * Represents an authentication or authorization token.
+ * This record is an immutable representation of a token value.
+ *
+ * @param value The token string.
+ */
+public record Token(String value){}
