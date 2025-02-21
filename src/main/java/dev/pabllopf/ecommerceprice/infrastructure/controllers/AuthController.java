@@ -18,6 +18,7 @@ import java.util.Date;
 @RequestMapping("api/auth")
 public class AuthController {
 
+    
     // The secret key used to sign the JWT token.
     private static final String SECRET_KEY = "BcKvLsO2FsKAB8KtMcOsOMKJwojDn2TDucOgJsKsWcOzw7jCmUQKw613w5UdAcKGQg==";
 
