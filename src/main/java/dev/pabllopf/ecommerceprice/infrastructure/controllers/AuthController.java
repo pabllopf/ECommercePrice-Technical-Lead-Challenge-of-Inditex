@@ -3,6 +3,11 @@ package dev.pabllopf.ecommerceprice.infrastructure.controllers;
 import dev.pabllopf.ecommerceprice.infrastructure.entities.LoginRequest;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +40,24 @@ public class AuthController {
      * @return A ResponseEntity containing the JWT token if authentication is successful, or an error message if the credentials are invalid.
      */
     @PostMapping("login")
+    @Operation(
+            summary = "User login",
+            description = "Authenticates a user and returns a JWT token",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "User login details",
+                    content = @Content(
+                            mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\n" +
+                                    "\"username\": \"user\",\n" +
+                                    "\"password\": \"password\"\n" +
+                                    "}")
+                    )
+            )
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Login successful"),
+            @ApiResponse(responseCode = "403", description = "Invalid username or password", content = @Content)
+    })
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         // Validate the provided username and password
         if (VALID_USERNAME.equals(loginRequest.getUsername()) && VALID_PASSWORD.equals(loginRequest.getPassword())) {
