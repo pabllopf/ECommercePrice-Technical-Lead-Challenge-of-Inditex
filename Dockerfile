@@ -1,27 +1,27 @@
 # Build stage
 FROM ubuntu:latest AS build
 
-# Update repositories and prepare the build environment
+# Update repositories and install OpenJDK 21
 RUN apt-get update
 RUN apt-get install openjdk-21-jdk -y
 
-# Copy the source code into the container
+# Copy the project source code into the container
 COPY . .
 
-# Ensure gradlew has execution permissions
+# Grant execution permissions to Gradle wrapper
 RUN chmod +x gradlew
 
-# Build the JAR of the project (without daemon to avoid issues in Docker)
+# Build the project JAR file (disabling the Gradle daemon to avoid issues in Docker)
 RUN ./gradlew bootJar --no-daemon
 
 # Final stage for the production container
 FROM openjdk:21-jdk-slim
 
-# Expose port 8080
+# Expose port 8080 to allow external access
 EXPOSE 8080
 
-# Copy the JAR file that matches the pattern demo-xxx*.jar from the build stage
-COPY --from=build /build/libs/demo-*.jar app.jar
+# Copy the built JAR file from the build stage to the final container
+COPY --from=build /build/libs/EcommercePriceAPI-*.jar app.jar
 
-# Set the entry point to run the JAR file
+# Set the entry point to execute the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]

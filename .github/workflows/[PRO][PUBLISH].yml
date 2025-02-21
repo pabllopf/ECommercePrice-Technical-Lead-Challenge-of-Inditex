@@ -38,6 +38,9 @@ jobs:
       - name: Build Project
         run: ./gradlew clean build
 
+      - name: Build Project
+        run: ./gradlew bootJar --no-daemon
+
       # Step 6: Extract the current version from build.gradle
       - name: Get Current Version from build.gradle
         run: |
@@ -125,6 +128,7 @@ jobs:
           append_body: true
           files: |
             build/libs/*.jar  # Upload built JAR file
+            build/libs/EcommercePriceAPI-*.jar
 
       - name: git fetch
         run: git fetch
