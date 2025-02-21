@@ -1,4 +1,4 @@
-package dev.pabllopf.ecommerceprice.domain.ports.in.authentification;
+package dev.pabllopf.ecommerceprice.domain.ports.in.auth;
 
 import dev.pabllopf.ecommerceprice.domain.model.Token;
 
