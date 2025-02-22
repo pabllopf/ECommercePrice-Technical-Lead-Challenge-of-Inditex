@@ -168,5 +168,4 @@ class PriceControllerTest {
                         .param("date", testDate.toString()))
                 .andExpect(status().isOk());
     }
-
 }
