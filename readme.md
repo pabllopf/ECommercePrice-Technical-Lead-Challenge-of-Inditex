@@ -188,6 +188,27 @@ To run the tests, use the following Gradle command:
 gradle test
 ```
 
+### Unit Tests Overview
+
+Unit tests are an essential part of this project, ensuring that the core components of the application, including the controller, service, and repository layers, function correctly. This application uses **JUnit** and **Mockito** for unit testing and mocking external dependencies. Unit tests are written to verify the behavior of individual components in isolation.
+
+### Testing Strategy
+
+- **Controller Layer Tests**: Verifies the correct behavior of REST API endpoints, including handling different input parameters and status codes.
+- **Service Layer Tests**: Focuses on the business logic, ensuring correct price retrieval and priority rules.
+- **Repository Layer Tests**: Ensures data retrieval from the H2 database is accurate and efficient.
+
+
+This will run all unit tests defined in the project and generate a test report.
+
+### Test Report
+
+You can view the test results in a detailed HTML report. The test report is generated after the tests are executed and can be accessed via the following URL:
+
+- [Test Reports](https://inditex-bcnc-ecommerce-price-engine.onrender.com/test-reports/index.html)
+
+This page provides an overview of the test execution, including the number of tests run, passed, failed, and skipped, along with detailed information for each test case.
+
 ## CI/CD
 
 This project is integrated with **CI/CD** to ensure automated builds and tests. The pipeline is configured with **GitHub Actions**.
