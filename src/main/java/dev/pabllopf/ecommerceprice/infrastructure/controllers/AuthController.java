@@ -1,40 +1,65 @@
 package dev.pabllopf.ecommerceprice.infrastructure.controllers;
 
+import dev.pabllopf.ecommerceprice.application.services.auth.AuthenticateService;
 import dev.pabllopf.ecommerceprice.infrastructure.entities.LoginRequest;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.http.HttpStatus;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
+/**
+ * The AuthController class handles HTTP requests related to user authentication.
+ * It provides an endpoint for user login, where the system authenticates the user
+ * based on the provided credentials and returns a JWT token upon successful authentication.
+ */
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    private static final String SECRET_KEY = "BcKvLsO2FsKAB8KtMcOsOMKJwojDn2TDucOgJsKsWcOzw7jCmUQKw613w5UdAcKGQg==";
+    /**
+     * The AuthenticateService is used to perform authentication logic.
+     */
+    private final AuthenticateService authenticateUserUseCase;
 
-    // Dummy users for validation (Replace with real user validation)
-    private static final String VALID_USERNAME = "user";
-    private static final String VALID_PASSWORD = "password";
-
-    @PostMapping("/login")
+    /**
+     * The login method is responsible for authenticating the user.
+     * It receives a LoginRequest containing the username and password,
+     * validates the credentials, and returns a JWT token if authentication is successful.
+     *
+     * @param loginRequest The login request containing the username and password.
+     * @return A ResponseEntity containing the JWT token if the login is successful.
+     * @throws IllegalArgumentException If the username or password is invalid.
+     */
+    @PostMapping("login")
+    @Operation(
+            summary = "User login",
+            description = "Authenticates a user and returns a JWT token",
+            requestBody = @RequestBody(
+                    description = "User credentials for authentication",
+                    content = @Content(
+                            mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\n" +
+                                    "\"username\": \"user1\",\n" +
+                                    "\"password\": \"user1\"\n" +
+                                    "}")
+                    )
+            )
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Login successful"),
+            @ApiResponse(responseCode = "403", description = "Invalid username or password")
+    })
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-        // Validate credentials (in real-world use a service to verify against a database)
-        if (VALID_USERNAME.equals(loginRequest.getUsername()) && VALID_PASSWORD.equals(loginRequest.getPassword())) {
-            // Create JWT token if valid
-            long expirationTime = 15 * 60 * 1000; // 15 minutes
-            String token = Jwts.builder()
-                    .setSubject(loginRequest.getUsername())
-                    .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-                    .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
-                    .compact();
+        // The username and password from the login request are passed to the authenticate service
+        String token = authenticateUserUseCase.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
 
-            return ResponseEntity.ok(token);
-        } else {
-            // Return error if invalid credentials
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid username or password");
-        }
+        // If authentication is successful, the JWT token is returned as part of the response
+        return ResponseEntity.ok(token);
     }
 }

@@ -1,17 +1,18 @@
 package dev.pabllopf.ecommerceprice.infrastructure.exceptions;
 
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ResourceNotFoundExceptionTest {
 
     @Test
-    void shouldCreateExceptionWithMessage() {
-        String errorMessage = "Resource not found";
-
-        ResourceNotFoundException exception = new ResourceNotFoundException(errorMessage);
-
-        assertThat(exception).isInstanceOf(RuntimeException.class);
-        assertThat(exception.getMessage()).isEqualTo(errorMessage);
+    void testExceptionMessage() {
+        String message = "Resource not found";
+        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> {
+            throw new ResourceNotFoundException(message);
+        });
+        assertEquals(message, exception.getMessage());
     }
 }

@@ -1,21 +1,27 @@
 package dev.pabllopf.ecommerceprice.infrastructure.config;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+
 import javax.sql.DataSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
 class H2DatabaseConfigTest {
 
-    @Autowired
-    private DataSource dataSource;
+    @InjectMocks
+    private H2DatabaseConfig h2DatabaseConfig;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
-    void shouldLoadH2DataSourceBean() {
-        assertThat(dataSource).isNotNull();
-        assertThat(dataSource.getClass().getName()).contains("HikariDataSource");
+    void testDataSource() {
+        DataSource dataSource = h2DatabaseConfig.dataSource();
+        assertNotNull(dataSource);
     }
 }

@@ -1,18 +1,21 @@
 name: "[PRO][CONTRIBUTORS]"
+
 on:
+  # Schedule the workflow to run daily at midnight (UTC)
   schedule:
     - cron: "0 0 * * *"
 
 jobs:
   CreateFiles:
     runs-on: ubuntu-latest
+
     steps:
-      - name: "readme.md"
+      # Step 1: Update the contributors section in README.md
+      - name: "📄 Update Contributors in readme.md"
         uses: akhilmhdh/contributors-readme-action@v2.3.10
         with:
-          image_size: 75
-          readme_path: "readme.md"
+          image_size: 75  # Set the contributor profile picture size (in pixels)
+          readme_path: "readme.md"  # Path to the README file to update
+
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-            
-          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication

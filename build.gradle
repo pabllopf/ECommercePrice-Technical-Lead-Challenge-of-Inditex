@@ -4,16 +4,28 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.asciidoctor.jvm.convert' version '3.3.2'
     id 'jacoco'
+    id "org.sonarqube" version "6.0.1.5171"
 }
 
 group = 'dev.pabllopf'
-version = '1'
+version = '0.0.7'
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
+
+
+sonar {
+    properties {
+        property "sonar.projectKey", "pabllopf_ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group"
+        property "sonar.organization", "pabllopf"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", System.getenv("SONAR_TOKEN")
+    }
+}
+
 
 configurations {
     compileOnly {

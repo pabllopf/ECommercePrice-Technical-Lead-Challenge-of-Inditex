@@ -1,18 +1,27 @@
 name: '[PRO][NEW][CONTRIBUTORS]'
 
 on:
+  # Trigger the workflow when a new issue is opened
   issues:
-    types: [ opened ]
+    types: [opened]
+
+  # Trigger the workflow when a new pull request is opened (even from forks)
   pull_request_target:
-    types: [ opened ]
+    types: [opened]
 
 jobs:
   welcome-new-contributor:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 'Greet the contributor'
+      # Step 1: Greet the new contributor when they open an issue or a pull request
+      - name: '👋 Greet the contributor'
         uses: garg3133/welcome-new-contributors@v1.2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}  # GitHub authentication token to post comments
+
+          # Message to display when a new issue is opened
           issue-message: 'Hello @contributor_name!, thanks for opening your first issue. We welcome you to the community!'
+
+          # Message to display when a new pull request is opened
           pr-message: 'Hello @contributor_name!, thanks for opening your first Pull Request. Someone will review it soon.'
