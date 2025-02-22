@@ -2,6 +2,22 @@
 
 **ECommercePriceAPI** is a Spring Boot-based application that exposes a RESTful endpoint for querying product prices based on specific date and brand information. This project aims to demonstrate the ability to handle dynamic price retrieval based on time intervals and priority rules using an in-memory H2 database.
 
+
+## Table of Contents
+0. [Quick Start] (#quick-start)
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies](#technologies)
+4. [Architecture](#architecture)
+5. [API Documentation](#api-documentation)
+6. [Test Scenarios](#test-scenarios)
+7. [Setup and Installation](#setup-and-installation)
+8. [CI/CD](#cicd)
+9. [Contributing](#contributing)
+10. [License](#license)
+
+## Quick Start
+
 > **Warning:**  
 > It's normal that the service might not be active immediately, and you may encounter a **502 Bad Gateway** error. If this happens, please wait up to 3 minutes for the service to automatically restart. This occurs because Render's free tier deactivates services that haven't been used for 15 minutes. After this period, the service should automatically come back online.
 
@@ -43,20 +59,6 @@ You can learn more about the platform by visiting the Render dashboard at:
 ### Conclusion
 Using Swagger UI is an intuitive way to explore and test the API without needing to write code. It allows you to interact with the API, test different endpoints, and view the results in real-time.
 
-
-
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Technologies](#technologies)
-4. [Architecture](#architecture)
-5. [API Documentation](#api-documentation)
-6. [Test Scenarios](#test-scenarios)
-7. [Setup and Installation](#setup-and-installation)
-8. [CI/CD](#cicd)
-9. [Contributing](#contributing)
-10. [License](#license)
 
 ## Introduction
 
