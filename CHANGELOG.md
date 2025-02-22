@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.0.6] - 2025-02-22
+### :sparkles: New Features
+- [`bfb13a6`](https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/commit/bfb13a67761dde3c3c26b61f407beb51883bece7) - report accesible from web *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`fe38933`](https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/commit/fe389330557594720721bf229379e92744f0acac) - report path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6049e2f`](https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/commit/6049e2f6f9128f47c119b79862e442d83c083706) - version of app *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.0.3] - 2025-02-21
 ### :memo: Documentation Changes
 - [`a941637`](https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/commit/a94163725a89dedf5923094b79d97664c5b517dd) - comments on application.properties *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -27,3 +36,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.0.1]: https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/compare/v0.0.0...v0.0.1
 [v0.0.2]: https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/compare/v0.0.1...v0.0.2
 [v0.0.3]: https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/compare/v0.0.2...v0.0.3
+[v0.0.6]: https://github.com/pabllopf/ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group/compare/v0.0.5...v0.0.6
