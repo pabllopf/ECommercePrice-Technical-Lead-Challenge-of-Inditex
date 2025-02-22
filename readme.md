@@ -13,7 +13,7 @@
 7. [Setup and Installation](#setup-and-installation)  
 8. [CI/CD](#cicd)  
 9. [Contributing](#contributing)  
-10. [License](#license)  
+10. [License](#license)
 
 ## Quick Start
 
@@ -70,6 +70,45 @@ Example data in the database:
 | 1        | 2020-06-14 15:00:00 | 2020-06-14 18:30:00 | 2 | 35455 | 1 | 25.45 | EUR |
 | 1        | 2020-06-15 00:00:00 | 2020-06-15 11:00:00 | 3 | 35455 | 1 | 30.50 | EUR |
 | 1        | 2020-06-15 16:00:00 | 2020-12-31 23:59:59 | 4 | 35455 | 1 | 38.95 | EUR |
+
+
+## Access the H2 Database
+
+The project uses an in-memory H2 database to store prices and product information. You can access the H2 admin panel to explore and run queries directly on the database.
+
+### How to Access the H2 Panel
+
+1. **Access the H2 Panel**:  
+   The H2 panel is available at the following URL when the application is running:
+   
+   [H2 Console](https://inditex-bcnc-ecommerce-price-engine.onrender.com/h2-console)
+
+2. **Configure the Connection**:  
+   Upon opening the URL, you will see a login screen for the H2 console. Use the following settings to connect to the in-memory database:
+
+   - **Driver Class**: `org.h2.Driver`
+   - **JDBC URL**: `jdbc:h2:mem:ecommerceprice`
+   - **User Name**: `sa`
+   - **Password**: (leave empty)
+
+3. **Explore the Database**:  
+   Once logged in, you can run SQL queries on the database tables. You can query the price data, products, and perform operations directly on the test database.
+
+### Example Query
+
+To view the available prices for a product, you can run a query like:
+
+```sql
+SELECT * FROM PRICE;
+```
+
+This will return all rows from the `PRICE` table, which contains pricing details, validity dates, and other relevant information.
+
+### Important Notes
+
+- The H2 database used is **in-memory**, meaning the data will be lost when the application is stopped.
+- The H2 console is mainly for **development** and **testing environments**.
+
 
 ## Features
 
