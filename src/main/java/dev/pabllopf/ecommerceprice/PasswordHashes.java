@@ -31,3 +31,4 @@ public class PasswordHashes {
         System.out.println(encoder.encode("superadmin"));  // Hash for the password "superadmin"
     }
 }
+
