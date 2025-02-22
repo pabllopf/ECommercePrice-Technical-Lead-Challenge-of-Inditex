@@ -192,30 +192,21 @@ This architecture ensures a **scalable, testable, and maintainable** application
 
 ## API Documentation
 
-### Endpoint: `/api/prices`
+### Base URL
+`https://inditex-bcnc-ecommerce-price-engine.onrender.com`
 
-#### **GET /api/prices**
+### **1. Get Price by Application Date**
+**Endpoint:** `GET /api/prices`
 
-**Parameters**:
-- `applicationDate` (String, ISO 8601 format): The date and time for which to check the price.
-- `productId` (Integer): The product identifier.
-- `brandId` (Integer): The brand identifier.
+**Description:**
+Retrieves the applicable price for a given product, brand, and application date.
 
-**Response**:
-- `productId`: The ID of the product.
-- `brandId`: The ID of the brand.
-- `priceList`: The price list ID.
-- `startDate`: The start date of the price validity.
-- `endDate`: The end date of the price validity.
-- `price`: The final price to apply.
-- `currency`: The currency (e.g., EUR).
+**Parameters:**
+- `applicationDate` (String, ISO 8601 format) - Required
+- `productId` (Integer) - Required
+- `brandId` (Integer) - Required
 
-Example Request:
-```http
-GET /api/prices?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1
-```
-
-Example Response:
+**Response:**
 ```json
 {
   "productId": 35455,
@@ -227,6 +218,149 @@ Example Response:
   "currency": "EUR"
 }
 ```
+
+---
+
+### **2. Get Price by ID**
+**Endpoint:** `GET /api/prices/{id}`
+
+**Description:**
+Retrieves the price details by its unique ID.
+
+**Parameters:**
+- `id` (Integer, path parameter) - Required
+
+**Response:**
+```json
+{
+  "productId": 35455,
+  "brandId": 1,
+  "priceList": 1,
+  "startDate": "2020-06-14T00:00:00",
+  "endDate": "2020-12-31T23:59:59",
+  "price": 35.50,
+  "currency": "EUR"
+}
+```
+
+---
+
+### **3. Create a New Price**
+**Endpoint:** `POST /api/prices`
+
+**Description:**
+Creates a new price entry for a product.
+
+**Request Body:**
+```json
+{
+  "brandId": 1,
+  "productId": 35455,
+  "priceList": 1,
+  "startDate": "2020-06-14T00:00:00",
+  "endDate": "2020-12-31T23:59:59",
+  "priority": 0,
+  "price": 35.5,
+  "currency": "EUR"
+}
+```
+
+**Response:**
+- `201 Created` if the price entry is successfully created.
+
+---
+
+### **4. Update an Existing Price**
+**Endpoint:** `PUT /api/prices`
+
+**Description:**
+Updates an existing price entry for a product.
+
+**Request Body:**
+```json
+{
+  "id": 1,
+  "brandId": 1,
+  "productId": 35455,
+  "priceList": 2,
+  "startDate": "2020-06-14T15:00:00",
+  "endDate": "2020-06-14T18:30:00",
+  "priority": 1,
+  "price": 25.45,
+  "currency": "EUR"
+}
+```
+
+**Response:**
+- `200 OK` if the price is updated successfully.
+- `404 Not Found` if the price entry does not exist.
+
+---
+
+### **5. Delete a Price**
+**Endpoint:** `DELETE /api/prices/{id}`
+
+**Description:**
+Deletes a price entry by its ID.
+
+**Parameters:**
+- `id` (Integer, path parameter) - Required
+
+**Response:**
+- `200 OK` if the price is deleted successfully.
+- `404 Not Found` if the price entry does not exist.
+
+---
+
+### **6. Retrieve All Prices**
+**Endpoint:** `GET /api/prices/all`
+
+**Description:**
+Fetches all available prices in the system.
+
+**Response:**
+```json
+[
+  {
+    "productId": 35455,
+    "brandId": 1,
+    "priceList": 1,
+    "startDate": "2020-06-14T00:00:00",
+    "endDate": "2020-12-31T23:59:59",
+    "price": 35.50,
+    "currency": "EUR"
+  }
+]
+```
+
+---
+
+### **7. Authentication**
+
+#### **User Login**
+**Endpoint:** `POST /api/auth/login`
+
+**Description:**
+Authenticates a user and returns a JWT token.
+
+**Request Body:**
+```json
+{
+  "username": "user1",
+  "password": "user1"
+}
+```
+
+**Response:**
+- `200 OK` with a JWT token on successful authentication.
+- `403 Forbidden` if authentication fails.
+
+---
+
+### **Security**
+- All endpoints require authentication via JWT, except `GET /api/prices` and `GET /api/prices/{id}`.
+- Include the `Authorization: Bearer <token>` header in protected requests.
+
 
 ## Test Scenarios
 
