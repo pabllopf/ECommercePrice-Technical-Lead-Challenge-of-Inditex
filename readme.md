@@ -2,6 +2,19 @@
 
 **ECommercePriceAPI** is a Spring Boot-based application that exposes a RESTful endpoint for querying product prices based on specific date and brand information. This project demonstrates dynamic price retrieval based on time intervals and priority rules using an in-memory H2 database, built with **Java 21**, **Spring Boot 3.4.7**, **OpenAPI**, and **Gravel**.
 
+Here is the updated table with the test reports link in English:  
+
+## Useful Links  
+
+| Description                                    | Link |
+|------------------------------------------------|------|
+| **Swagger UI (API documentation and testing)** | [Swagger UI](https://inditex-bcnc-ecommerce-price-engine.onrender.com/swagger-ui/index.html) |
+| **Render Dashboard (Deployment and monitoring)** | [Render Dashboard](https://dashboard.render.com) |
+| **H2 Console (In-memory database exploration)** | [H2 Console](https://inditex-bcnc-ecommerce-price-engine.onrender.com/h2-console) |
+| **Test Reports (Automated test results)** | [Test Reports](https://inditex-bcnc-ecommerce-price-engine.onrender.com/test-reports/index.html) |  
+
+Let me know if you need any modifications! 🚀
+
 ## Table of Contents
 0. [Quick Start](#quick-start)  
 1. [Introduction](#introduction)  
