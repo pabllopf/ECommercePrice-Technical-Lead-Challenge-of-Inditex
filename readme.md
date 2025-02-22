@@ -1,70 +1,68 @@
 # ECommercePriceAPI
 
-**ECommercePriceAPI** is a Spring Boot-based application that exposes a RESTful endpoint for querying product prices based on specific date and brand information. This project aims to demonstrate the ability to handle dynamic price retrieval based on time intervals and priority rules using an in-memory H2 database.
-
+**ECommercePriceAPI** is a Spring Boot-based application that exposes a RESTful endpoint for querying product prices based on specific date and brand information. This project demonstrates dynamic price retrieval based on time intervals and priority rules using an in-memory H2 database, built with **Java 21**, **Spring Boot 3.4.7**, **OpenAPI**, and **Gravel**.
 
 ## Table of Contents
-0. [Quick Start] (#quick-start)
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Technologies](#technologies)
-4. [Architecture](#architecture)
-5. [API Documentation](#api-documentation)
-6. [Test Scenarios](#test-scenarios)
-7. [Setup and Installation](#setup-and-installation)
-8. [CI/CD](#cicd)
-9. [Contributing](#contributing)
-10. [License](#license)
+0. [Quick Start](#quick-start)  
+1. [Introduction](#introduction)  
+2. [Features](#features)  
+3. [Technologies](#technologies)  
+4. [Architecture](#architecture)  
+5. [API Documentation](#api-documentation)  
+6. [Test Scenarios](#test-scenarios)  
+7. [Setup and Installation](#setup-and-installation)  
+8. [CI/CD](#cicd)  
+9. [Contributing](#contributing)  
+10. [License](#license)  
 
 ## Quick Start
 
 > **Warning:**  
-> It's normal that the service might not be active immediately, and you may encounter a **502 Bad Gateway** error. If this happens, please wait up to 3 minutes for the service to automatically restart. This occurs because Render's free tier deactivates services that haven't been used for 15 minutes. After this period, the service should automatically come back online.
-
+> If the service is not active immediately, you may encounter a **502 Bad Gateway** error. Please wait up to 3 minutes for the service to automatically restart. This is due to Render's free tier deactivating services after 15 minutes of inactivity. The service should come back online automatically after that.
 
 ## How to Test and Use the Inditex Ecommerce Price Engine API
 
 ### Introduction
-The Inditex Ecommerce Price Engine API allows you to interact with the pricing data of products available on the Inditex e-commerce platform. To access and test the API, you can use the Swagger UI interface, which provides an interactive documentation and testing environment for the API.
+The Inditex Ecommerce Price Engine API allows you to interact with product pricing data available on the Inditex e-commerce platform. You can access and test the API through the Swagger UI interface, which provides an interactive environment for documentation and testing.
 
 ### How to Access the API
 
 1. Open your web browser and navigate to the Swagger UI documentation at:  
    [Inditex Ecommerce Price Engine Swagger UI](https://inditex-bcnc-ecommerce-price-engine.onrender.com/swagger-ui/index.html)
 
-2. Once you open the link, you will see the interactive interface of the API. It includes a list of all available endpoints and their descriptions.
+2. Upon opening the link, the interactive interface will display available endpoints and their descriptions.
 
 ### How to Test the API
 
 1. **Explore Available Endpoints:**
-   The Swagger UI will list all the API endpoints along with their HTTP methods (GET, POST, etc.). You can expand each endpoint to view additional details, including request parameters and response formats.
+   The Swagger UI lists all API endpoints along with their HTTP methods (GET, POST, etc.). Expand each endpoint to view more details, such as request parameters and response formats.
 
 2. **Test an Endpoint:**
-   - Select the endpoint you want to test from the list.
-   - Click on the “Try it out” button to enable input fields.
-   - Enter the required parameters for the request (if any).
-   - Click on the “Execute” button to send the request.
-   - The response will be displayed below, showing the returned data, status code, and any errors that may have occurred.
+   - Select the desired endpoint.
+   - Click “Try it out” to enable input fields.
+   - Enter required parameters (if any).
+   - Click “Execute” to send the request.
+   - The response will display, including the returned data, status code, and any errors.
 
 3. **View Response:**
-   After executing a request, you will be able to see the API response directly in the Swagger UI. This includes the response body (JSON or XML), headers, and the status code indicating the success or failure of the request.
+   After executing a request, you can see the API response directly in the Swagger UI, including the body (in JSON or XML), headers, and the HTTP status code.
 
 ### Platform Used to Deploy
 
-The Inditex Ecommerce Price Engine API is deployed on Render, a platform for deploying web applications and APIs. Render allows easy deployment and scaling of applications with support for various backends, including Node.js, Python, and others.
+The Inditex Ecommerce Price Engine API is deployed on **Render**, a platform for web app and API deployment. Render supports various backends and offers easy scaling.
 
-You can learn more about the platform by visiting the Render dashboard at:  
+More info:  
 [Render Dashboard](https://dashboard.render.com)
 
 ### Conclusion
-Using Swagger UI is an intuitive way to explore and test the API without needing to write code. It allows you to interact with the API, test different endpoints, and view the results in real-time.
 
+Swagger UI provides an intuitive way to explore and test the API without needing to write code. It allows interaction with the API, testing endpoints, and viewing real-time results.
 
 ## Introduction
 
-The application provides a REST endpoint to query the product price for a given brand, product ID, and application date. The system retrieves the price from a sample database (H2) that includes prices for different time intervals and brand-specific priorities.
+The application provides a REST endpoint to query product prices for a given brand, product ID, and application date. The system retrieves prices from an H2 in-memory database, which contains prices for various time intervals and brand-specific priorities.
 
-Example data provided in the database:
+Example data in the database:
 
 | BRAND_ID | START_DATE | END_DATE | PRICE_LIST | PRODUCT_ID | PRIORITY | PRICE | CURR |
 |----------|------------|----------|------------|------------|----------|-------|------|
@@ -75,30 +73,33 @@ Example data provided in the database:
 
 ## Features
 
-- **REST API Endpoint**: Accepts product ID, brand ID, and a date and returns the relevant pricing information.
-- **In-Memory Database (H2)**: The pricing data is stored in a lightweight in-memory H2 database for efficient querying.
-- **Dynamic Pricing**: Fetches prices dynamically based on the requested date, product, and brand.
-- **Price Priority**: If two pricing entries overlap, the one with the highest priority (numerically) is returned.
-- **Error Handling**: Uses controller advice to handle exceptions and return appropriate HTTP status codes.
+- **REST API Endpoint**: Accepts product ID, brand ID, and a date, returning relevant pricing information.
+- **In-Memory Database (H2)**: Lightweight database for fast price queries.
+- **Dynamic Pricing**: Prices are fetched dynamically based on the requested date, product, and brand.
+- **Price Priority**: When two prices overlap, the one with the higher priority is returned.
+- **Error Handling**: Centralized exception handling via `@ControllerAdvice`, returning appropriate HTTP status codes.
 
 ## Technologies
 
-- **Spring Boot**: For building the RESTful web service.
-- **H2 Database**: In-memory database for storing price data.
-- **JUnit & Mockito**: For unit testing and mocking dependencies.
-- **Jacoco**: For code coverage reporting.
-- **Gradle**: For project management and dependencies.
-- **Lombok**: To reduce boilerplate code (getters, setters, constructors, etc.).
-- **ControllerAdvice**: For centralized exception handling.
+- **Java 21**: Latest Java version for improved performance and language features.
+- **Spring Boot 3.4.7**: Framework for building RESTful APIs.
+- **H2 Database**: In-memory database to store price data.
+- **OpenAPI**: API documentation standard for describing the RESTful service.
+- **Gravel**: Used for API monitoring and documentation enhancements.
+- **JUnit 5 & Mockito**: For unit testing and mocking dependencies.
+- **Jacoco**: Code coverage reporting.
+- **Gradle**: Build automation and dependency management.
+- **Lombok**: Reduces boilerplate code (getters, setters, constructors).
+- **ControllerAdvice**: Centralized exception handling.
 
 ## Architecture
 
-The application follows the **Hexagonal Architecture** with a clear separation of concerns into layers, allowing for easy maintenance, testing, and extension. The layers are as follows:
+The application follows **Hexagonal Architecture** with a clear separation into layers for easy maintenance and testing. These layers include:
 
 - **Controller Layer**: Exposes the REST API endpoints.
-- **Service Layer**: Contains business logic for price retrieval.
-- **Repository Layer**: Interfaces with the H2 database to retrieve pricing data.
-- **Domain Layer**: Contains entities like `Price` and `Product`.
+- **Service Layer**: Contains the business logic for price retrieval.
+- **Repository Layer**: Manages interactions with the H2 database.
+- **Domain Layer**: Defines entities like `Price` and `Product`.
 
 ### Diagram
 
@@ -154,13 +155,13 @@ Example Response:
 3. **Test 3**: Request at 21:00 on June 14 for product 35455 and brand 1 (ZARA).
 4. **Test 4**: Request at 10:00 on June 15 for product 35455 and brand 1 (ZARA).
 5. **Test 5**: Request at 21:00 on June 16 for product 35455 and brand 1 (ZARA).
-6. **Integration Test**: Ensure the integration between the controller, service, and repository layers works correctly.
+6. **Integration Test**: Ensure the integration between controller, service, and repository layers.
 
 ## Setup and Installation
 
 ### Prerequisites
-- Java 11 or higher
-- Gradle
+- **Java 21** or higher
+- **Gradle**
 - IDE (e.g., IntelliJ IDEA or Eclipse)
 
 ### Steps
@@ -179,7 +180,7 @@ Example Response:
     gradle bootRun
     ```
 
-4. The application should be running at `http://localhost:8080`.
+4. The application should now be running at `http://localhost:8080`.
 
 ### Running Tests
 To run the tests, use the following Gradle command:
@@ -189,9 +190,9 @@ gradle test
 
 ## CI/CD
 
-This project includes CI/CD integration to ensure automated builds and tests. The pipeline is set up in GitHub Actions.
+This project is integrated with **CI/CD** to ensure automated builds and tests. The pipeline is configured with **GitHub Actions**.
 
-### Example Workflow (GitHub Actions)
+### Example GitHub Actions Workflow
 ```yaml
 name: Java CI with Gradle
 
@@ -211,10 +212,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Set up JDK 11
+    - name: Set up JDK 21
       uses: actions/setup-java@v2
       with:
-        java-version: '11'
+        java-version: '21'
         distribution: 'adoptopenjdk'
 
     - name: Build with Gradle
@@ -226,7 +227,7 @@ jobs:
 
 ## Contributing
 
-Feel free to fork the repository and submit issues or pull requests. Ensure you follow the coding standards and write meaningful commit messages.
+Feel free to fork the repository and submit issues or pull requests. Ensure you follow coding standards and write meaningful commit messages.
 
 ## License
 
