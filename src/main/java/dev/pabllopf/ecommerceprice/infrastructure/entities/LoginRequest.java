@@ -1,18 +1,29 @@
 package dev.pabllopf.ecommerceprice.infrastructure.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 /**
- * LoginRequest is used to encapsulate the login credentials provided by a user.
- * It contains the username and password that are sent from the client to authenticate the user.
+ * The LoginRequest class is used to represent the data structure for user authentication.
+ * It contains the user's username and password, which are provided when attempting to log in.
+ * This class is typically used in the login API request to pass the credentials to the authentication service.
+ * This class is annotated with Lombok annotations to automatically generate getter, setter, and constructor methods.
  */
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class LoginRequest {
 
+    /**
+     * The username provided by the user for authentication.
+     * It is used to identify the user in the system.
+     */
     private String username;
+
+    /**
+     * The password provided by the user for authentication.
+     * It is used along with the username to validate the user's identity.
+     */
     private String password;
 }

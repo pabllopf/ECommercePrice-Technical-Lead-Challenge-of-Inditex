@@ -9,33 +9,38 @@ import io.swagger.v3.oas.models.security.SecurityScheme.Type;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * The OpenAPIConfig class provides the configuration for the OpenAPI documentation of the E-commerce Price API.
+ * It includes the metadata of the API, such as the title, version, description, and contact information,
+ * as well as the security settings for API access.
+ * This configuration enables the integration of OpenAPI documentation into the Spring Boot application,
+ * providing a clear and structured description of the API endpoints.
+ */
 @Configuration
 public class OpenAPIConfig {
 
     /**
-     * Configures OpenAPI documentation for the E-commerce Price API.
-     * This method sets up the metadata and security schemes for the API documentation.
+     * Configures the custom OpenAPI instance for the E-commerce Price API.
+     * This method sets up the metadata for the API, such as the title, version, description, and contact details.
+     * Additionally, it configures the security scheme using Bearer Authentication with JWT tokens.
      *
-     * @return The OpenAPI configuration with custom details for the API.
+     * @return The OpenAPI configuration object with the custom metadata and security settings.
      */
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                // Information section of the API, including the title, version, description, and contact info.
                 .info(new Info()
-                        .title("E-commerce Price API") // The title of the API
-                        .version("1.0") // The version of the API
-                        .description("API para gestionar precios en e-commerce") // Short description in Spanish: "API for managing prices in e-commerce"
-                        .contact(new Contact() // Contact details of the author or maintainer
-                                .name("Pablo Perdomo Falcón") // Author's name
-                                .email("pabloperdomofalcon@gmail.com"))) // Author's email address
-                // Define security requirement for the API, using Bearer authentication with JWT tokens
+                        .title("E-commerce Price API")
+                        .version("1.0")
+                        .description("API to manage pricing in e-commerce")
+                        .contact(new Contact()
+                                .name("Pablo Perdomo Falcón")
+                                .email("pabloperdomofalcon@gmail.com")))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-                // Set up the components section to define security schemes
                 .components(new io.swagger.v3.oas.models.Components()
                         .addSecuritySchemes("bearerAuth", new io.swagger.v3.oas.models.security.SecurityScheme()
-                                .type(Type.HTTP) // Use HTTP-based authentication
-                                .scheme("bearer") // Bearer token authentication scheme
-                                .bearerFormat("JWT"))); // Format for the bearer token (JWT)
+                                .type(Type.HTTP)
+                                .scheme("bearer")
+                                .bearerFormat("JWT")));
     }
 }

@@ -1,4 +1,4 @@
-package dev.pabllopf.ecommerceprice.domain.ports.out;
+package dev.pabllopf.ecommerceprice.domain.ports.out.price;
 
 import dev.pabllopf.ecommerceprice.domain.model.Price;
 

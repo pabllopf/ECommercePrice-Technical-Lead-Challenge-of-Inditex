@@ -1,12 +1,9 @@
 package dev.pabllopf.ecommerceprice.infrastructure.repositories;
 
-import dev.pabllopf.ecommerceprice.domain.model.Price;
-import dev.pabllopf.ecommerceprice.domain.ports.out.IPriceRepositoryPort;
 import dev.pabllopf.ecommerceprice.infrastructure.entities.PriceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

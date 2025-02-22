@@ -1,28 +1,35 @@
 package dev.pabllopf.ecommerceprice.infrastructure.adapters;
 
 import dev.pabllopf.ecommerceprice.domain.model.Price;
-import dev.pabllopf.ecommerceprice.domain.ports.out.IPriceRepositoryPort;
+import dev.pabllopf.ecommerceprice.domain.ports.out.price.IPriceRepositoryPort;
 import dev.pabllopf.ecommerceprice.infrastructure.entities.PriceEntity;
 import dev.pabllopf.ecommerceprice.infrastructure.repositories.IJpaPriceRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The JpaPriceRepositoryAdapter class implements the IPriceRepositoryPort interface,
+ * serving as an adapter between the domain model and the persistence layer for price-related operations.
+ * It uses the JPA repository to manage price records in the database and maps them to the domain model.
+ */
 @RequiredArgsConstructor
 public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
 
-    // The JPA repository used for interacting with the database
+    /**
+     * The JPA repository used for interacting with the database.
+     * This repository performs CRUD operations on price entities.
+     */
     private final IJpaPriceRepository jpaPriceRepository;
 
     /**
-     * Saves a price record in the database.
-     * Converts the domain model Price to the entity PriceEntity, saves it, and then converts it back to the domain model.
+     * Saves a price record in the database. This method converts the domain model Price to a PriceEntity,
+     * saves it to the database, and converts it back to the domain model Price.
      *
-     * @param price The price object to be saved.
-     * @return The saved price object from the database.
+     * @param price The price object to be saved in the database.
+     * @return The saved price object in domain model format.
      */
     @Override
     public Price save(Price price) {
@@ -31,10 +38,11 @@ public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
 
     /**
      * Finds the applicable price for a given brand, product, and date.
-     * Converts the found PriceEntity to the domain model Price.
+     * It fetches the PriceEntity that matches the provided criteria,
+     * and maps it to the domain model Price.
      *
-     * @param brandId The ID of the brand.
-     * @param productId The ID of the product.
+     * @param brandId The ID of the brand to which the price is associated.
+     * @param productId The ID of the product for which the price is applicable.
      * @param date The date when the price is applicable.
      * @return An Optional containing the applicable price, or an empty Optional if no price is found.
      */
@@ -44,11 +52,11 @@ public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
     }
 
     /**
-     * Finds a price by its ID.
-     * Converts the found PriceEntity to the domain model Price.
+     * Finds a price by its ID. This method retrieves the PriceEntity with the specified ID
+     * and maps it to the domain model Price.
      *
      * @param id The ID of the price to be retrieved.
-     * @return An Optional containing the price, or an empty Optional if no price is found.
+     * @return An Optional containing the price if found, or an empty Optional if no price is found.
      */
     @Override
     public Optional<Price> findById(Long id) {
@@ -57,9 +65,9 @@ public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
 
     /**
      * Retrieves all price records from the database.
-     * Converts each PriceEntity to the domain model Price and returns them in a list.
+     * Each PriceEntity is converted into a domain model Price and returned as a list.
      *
-     * @return A list of all prices.
+     * @return A list of all prices in the database.
      */
     @Override
     public List<Price> findAll() {
@@ -67,12 +75,11 @@ public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
     }
 
     /**
-     * Updates an existing price record.
-     * First, it checks if the price exists by its ID, and if so, updates it.
-     * Converts the updated PriceEntity back to the domain model Price.
+     * Updates an existing price record. First, the method checks if the price exists by its ID,
+     * and if found, updates the record. The updated PriceEntity is converted back to the domain model Price.
      *
-     * @param price The price object with updated data.
-     * @return An Optional containing the updated price, or an empty Optional if the price was not found.
+     * @param price The price object containing updated data.
+     * @return An Optional containing the updated price, or an empty Optional if the price is not found.
      */
     @Override
     public Optional<Price> update(Price price) {
@@ -85,10 +92,10 @@ public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
     /**
      * Deletes a price record by its ID.
      * If the price is found, it is deleted, and the method returns true.
-     * Otherwise, it returns false.
+     * If the price is not found, the method returns false.
      *
      * @param id The ID of the price to be deleted.
-     * @return True if the price was deleted, false if it was not found.
+     * @return True if the price was deleted, false if the price was not found.
      */
     @Override
     public boolean deleteById(Long id) {

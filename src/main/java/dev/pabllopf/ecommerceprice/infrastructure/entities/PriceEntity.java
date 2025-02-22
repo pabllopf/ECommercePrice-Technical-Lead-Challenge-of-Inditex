@@ -19,31 +19,67 @@ import java.time.LocalDateTime;
 @Getter
 public class PriceEntity {
 
+    /**
+     * The unique identifier for the price record.
+     * This field is automatically generated and is used to reference the price entity in the database.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * The brand ID associated with the price record.
+     * This is used to link the price to a particular brand.
+     */
     @Column(name = "brand_id")
     private Integer brandId;
 
+    /**
+     * The start date and time when the price is applicable.
+     * This defines the beginning of the price validity period.
+     */
     @Column(name = "start_date")
     private LocalDateTime startDate;
 
+    /**
+     * The end date and time when the price is no longer applicable.
+     * This defines the end of the price validity period.
+     */
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    /**
+     * The price list ID associated with the price record.
+     * This is used to identify the specific price list the price belongs to.
+     */
     @Column(name = "price_list")
     private Integer priceList;
 
+    /**
+     * The product ID associated with the price record.
+     * This links the price to a specific product.
+     */
     @Column(name = "product_id")
     private Integer productId;
 
+    /**
+     * The priority of the price record.
+     * This is used to determine the order of prices when there are multiple applicable prices.
+     */
     @Column(name = "priority")
     private Integer priority;
 
+    /**
+     * The price value.
+     * This is the actual price of the product.
+     */
     @Column(name = "price")
     private BigDecimal price;
 
+    /**
+     * The currency of the price value.
+     * This specifies the currency in which the price is denominated (e.g., EUR, USD).
+     */
     @Column(name = "currency")
     private String currency;
 

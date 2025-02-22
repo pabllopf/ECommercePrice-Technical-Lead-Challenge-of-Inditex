@@ -23,7 +23,7 @@ import java.util.Collections;
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
-    // The secret key used for signing and verifying JWT tokens.
+    // The secret key used for signing and verifying JWT tokens TODO: Change this to a more secure value
     private static final String SECRET_KEY = "BcKvLsO2FsKAB8KtMcOsOMKJwojDn2TDucOgJsKsWcOzw7jCmUQKw613w5UdAcKGQg==";
 
     /**

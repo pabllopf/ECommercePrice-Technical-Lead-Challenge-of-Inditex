@@ -2,7 +2,7 @@ package dev.pabllopf.ecommerceprice.application.usecases.price;
 
 import dev.pabllopf.ecommerceprice.domain.model.Price;
 import dev.pabllopf.ecommerceprice.domain.ports.in.price.IGetPriceUseCase;
-import dev.pabllopf.ecommerceprice.domain.ports.out.IPriceRepositoryPort;
+import dev.pabllopf.ecommerceprice.domain.ports.out.price.IPriceRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;

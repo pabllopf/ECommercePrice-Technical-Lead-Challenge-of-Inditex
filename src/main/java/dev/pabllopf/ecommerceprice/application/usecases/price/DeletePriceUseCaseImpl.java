@@ -1,7 +1,7 @@
 package dev.pabllopf.ecommerceprice.application.usecases.price;
 
 import dev.pabllopf.ecommerceprice.domain.ports.in.price.IDeletePriceUseCase;
-import dev.pabllopf.ecommerceprice.domain.ports.out.IPriceRepositoryPort;
+import dev.pabllopf.ecommerceprice.domain.ports.out.price.IPriceRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 /**
