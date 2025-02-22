@@ -12,8 +12,6 @@
 | **Test Reports (Automated test results)** | [Test Reports](https://inditex-bcnc-ecommerce-price-engine.onrender.com/test-reports/index.html) |
 | **SonarCloud (Code quality and analysis)** | [SonarCloud](https://sonarcloud.io/summary/overall?id=pabllopf_ECommercePrice-Technical-Lead-Challenge-of-Inditex-BCNC-Group&branch=master) |  
 
-Let me know if you need any further modifications! 🚀
-
 ## Table of Contents
 0. [Quick Start](#quick-start)  
 1. [Introduction](#introduction)  
