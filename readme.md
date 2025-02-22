@@ -131,23 +131,64 @@ This will return all rows from the `PRICE` table, which contains pricing details
 - **Lombok**: Reduces boilerplate code (getters, setters, constructors).
 - **ControllerAdvice**: Centralized exception handling.
 
+
 ## Architecture
 
-The application follows **Hexagonal Architecture** with a clear separation into layers for easy maintenance and testing. These layers include:
+The application follows **Hexagonal Architecture (Ports & Adapters)**, ensuring a clear separation of concerns, better maintainability, and easy testing. The architecture is structured into three main layers:
 
-- **Controller Layer**: Exposes the REST API endpoints.
-- **Service Layer**: Contains the business logic for price retrieval.
-- **Repository Layer**: Manages interactions with the H2 database.
-- **Domain Layer**: Defines entities like `Price` and `Product`.
+### **1. Application Layer**
+This layer orchestrates the business logic and acts as a bridge between external interactions and the domain layer. It consists of:
 
-### Diagram
+- **DTOs (Data Transfer Objects):** Structures used to transfer data between layers while maintaining encapsulation.
+- **Filters:** Middleware components that handle cross-cutting concerns like request validation, logging, or authentication.
+- **Services:** Implements the business logic related to price retrieval and other core functionalities.
+- **Use Cases:** Defines application-specific business rules and workflows.
 
+### **2. Domain Layer**
+The **core of the application**, where business logic is defined independently of any external frameworks. It includes:
+
+- **Model:** Contains the main business entities such as `Price` and `Product`, ensuring a clear domain model.
+- **Ports:** Defines interfaces (inbound and outbound) that abstract the interaction between the application and external dependencies.
+
+### **3. Infrastructure Layer**
+Handles all external concerns such as API exposure, data persistence, configuration, and exception handling. It consists of:
+
+- **Adapters:** Implements the port interfaces, allowing communication with external services or databases.
+- **Config:** Manages application-wide configurations such as dependency injection and environment variables.
+- **Controllers:** Exposes REST API endpoints to interact with the application.
+- **Entities:** Represents database models mapped to the domain.
+- **Exceptions:** Handles and standardizes error responses.
+- **Repositories:** Implements data access logic, interacting with the database.
+
+### **Why Hexagonal Architecture?**
+The **Ports & Adapters** approach ensures:
+- **Decoupling:** Business logic is independent of frameworks, databases, or UI.
+- **Testability:** Core logic can be tested without dependencies.
+- **Flexibility:** Easy to replace or extend components (e.g., change from H2 to another database).
+- **Maintainability:** Clear boundaries between application layers simplify modifications.
+
+### **Diagram Representation**
 ```plaintext
 +------------------+         +-----------------+         +--------------------+
-|  Controller      | -----> |  Service Layer  | -----> |  Repository Layer  |
+|  Controllers     | -----> |  Service Layer  | -----> |  Repositories      |
 |  (REST API)      |         |  (Business Logic)|         |  (Database Access) |
 +------------------+         +-----------------+         +--------------------+
+          |                          |                             |
+          |                          |                             |
+          v                          v                             v
+  +----------------+       +------------------+       +-------------------+
+  |  Filters       | ----> |  Use Cases       | ----> |  Infrastructure   |
+  +----------------+       +------------------+       +-------------------+
+                                  |
+                                  v
+                     +----------------------+
+                     |  Domain Layer (Core)  |
+                     +----------------------+
+                     |  Models & Ports      |
+                     +----------------------+
 ```
+
+This architecture ensures a **scalable, testable, and maintainable** application, making it adaptable to future changes. 🚀
 
 ## API Documentation
 
