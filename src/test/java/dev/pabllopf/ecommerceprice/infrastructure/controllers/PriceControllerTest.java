@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -92,4 +93,80 @@ class PriceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Price deleted successfully."));
     }
+
+    @Test
+    public void testGetPriceAt10amOnJune14() throws Exception {
+        LocalDateTime testDate = LocalDateTime.of(2020, 6, 14, 10, 0, 0, 0);
+        Price testPrice = new Price(1L, 1, testDate, testDate.plusHours(1), 1, 35455, 0, BigDecimal.valueOf(35.50), "EUR");
+
+        Mockito.when(priceService.findApplicablePrice(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn(Optional.of(testPrice));
+
+        mockMvc.perform(get("/api/prices/applicable")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("date", testDate.toString()))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetPriceAt4pmOnJune14() throws Exception {
+        LocalDateTime testDate = LocalDateTime.of(2020, 6, 14, 16, 0, 0, 0);
+        Price testPrice = new Price(1L, 1, testDate, testDate.plusHours(1), 2, 35455, 1, BigDecimal.valueOf(25.45), "EUR");
+
+        Mockito.when(priceService.findApplicablePrice(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn(Optional.of(testPrice));
+
+        mockMvc.perform(get("/api/prices/applicable")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("date", testDate.toString()))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetPriceAt9pmOnJune14() throws Exception {
+        LocalDateTime testDate = LocalDateTime.of(2020, 6, 14, 21, 0, 0, 0);
+        Price testPrice = new Price(1L, 1, testDate, testDate.plusHours(1), 2, 35455, 1, BigDecimal.valueOf(25.45), "EUR");
+
+        Mockito.when(priceService.findApplicablePrice(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn(Optional.of(testPrice));
+
+        mockMvc.perform(get("/api/prices/applicable")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("date", testDate.toString()))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetPriceAt10amOnJune15() throws Exception {
+        LocalDateTime testDate = LocalDateTime.of(2020, 6, 15, 10, 0, 0, 0);
+        Price testPrice = new Price(1L, 1, testDate, testDate.plusHours(1), 3, 35455, 1, BigDecimal.valueOf(30.50), "EUR");
+
+        Mockito.when(priceService.findApplicablePrice(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn(Optional.of(testPrice));
+
+        mockMvc.perform(get("/api/prices/applicable")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("date", testDate.toString()))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetPriceAt9pmOnJune16() throws Exception {
+        LocalDateTime testDate = LocalDateTime.of(2020, 6, 16, 21, 0, 0, 0);
+        Price testPrice = new Price(1L, 1, testDate, testDate.plusHours(1), 4, 35455, 1, BigDecimal.valueOf(38.95), "EUR");
+
+        Mockito.when(priceService.findApplicablePrice(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn(Optional.of(testPrice));
+
+        mockMvc.perform(get("/api/prices/applicable")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("date", testDate.toString()))
+                .andExpect(status().isOk());
+    }
+
 }
