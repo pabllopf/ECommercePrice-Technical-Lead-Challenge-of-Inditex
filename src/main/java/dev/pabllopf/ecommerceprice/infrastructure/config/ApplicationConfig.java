@@ -96,8 +96,8 @@ public class ApplicationConfig {
      * It delegates the actual logic to the AuthenticateAdapter.
      *
      * @param userRepositoryPort The user repository port, injected by Spring.
-     * @param tokenProviderPort The token provider port, injected by Spring.
-     * @param passwordEncoder The password encoder, injected by Spring.
+     * @param tokenProviderPort  The token provider port, injected by Spring.
+     * @param passwordEncoder    The password encoder, injected by Spring.
      * @return A configured instance of AuthenticateAdapter, implementing the AuthenticatePort.
      */
     @Bean

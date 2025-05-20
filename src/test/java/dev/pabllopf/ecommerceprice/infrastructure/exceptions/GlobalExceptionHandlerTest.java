@@ -32,20 +32,21 @@ class GlobalExceptionHandlerTest {
         MockitoAnnotations.openMocks(this);
     }
 
-   @Test
-   void handleResourceNotFoundException() throws Exception {
-       when(priceService.findAllPrices()).thenThrow(new ResourceNotFoundException("Resource not found"));
+    @Test
+    void handleResourceNotFoundException() throws Exception {
+        when(priceService.findAllPrices()).thenThrow(new ResourceNotFoundException("Resource not found"));
 
-       mockMvc.perform(get("/api/prices/all")
-               .contentType(MediaType.APPLICATION_JSON))
-               .andExpect(status().isUnauthorized());
-   }
+        mockMvc.perform(get("/api/prices/all")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isUnauthorized());
+    }
+
     @Test
     void handleGenericException() throws Exception {
         when(priceService.findAllPrices()).thenThrow(new RuntimeException("Internal error"));
 
         mockMvc.perform(get("/api/prices/applicable") // Replace with actual endpoint
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isUnauthorized());
     }
 }

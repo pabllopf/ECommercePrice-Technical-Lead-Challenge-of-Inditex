@@ -49,9 +49,9 @@ public class GetPriceUseCaseImpl implements IGetPriceUseCase {
      * Retrieves the applicable price for a given brand and product at a specific date and time.
      * This method checks the repository for the most relevant price for the specified criteria.
      *
-     * @param brandId The ID of the brand.
+     * @param brandId   The ID of the brand.
      * @param productId The ID of the product.
-     * @param date The date and time when the price is applicable.
+     * @param date      The date and time when the price is applicable.
      * @return An Optional containing the applicable price, or empty if no applicable price is found.
      */
     @Override

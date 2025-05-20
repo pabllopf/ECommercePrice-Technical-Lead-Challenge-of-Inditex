@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
  * AuthenticateUseCaseImpl handles the business logic for authenticating a user.
  * It implements the IAuthenticateUseCase interface and delegates the authentication process
  * to the appropriate port, IAuthenticatePort.
- *
+ * <p>
  * This class acts as the use case layer for user authentication, ensuring that the logic
  * for user authentication is separated from the infrastructure layer.
  */

@@ -26,7 +26,7 @@ public class IUpdatePriceUseCaseTest {
 
     @Test
     public void testUpdatePriceSuccess() {
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
 
         price.setId(1L);
         price.setPrice(BigDecimal.valueOf(100.0));
@@ -37,7 +37,7 @@ public class IUpdatePriceUseCaseTest {
 
     @Test
     public void testUpdatePriceFailure() {
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
 
         price.setId(1L);
         price.setPrice(BigDecimal.valueOf(100.0));

@@ -27,9 +27,9 @@ public interface IPriceRepositoryPort {
      * This method checks the repository to find the applicable price based on the brand, product, and date.
      * It returns an optional price, as there might not be a matching price for the given parameters.
      *
-     * @param brandId The ID of the brand for which the price is being requested.
+     * @param brandId   The ID of the brand for which the price is being requested.
      * @param productId The ID of the product for which the price is being requested.
-     * @param date The date when the price is to be applied.
+     * @param date      The date when the price is to be applied.
      * @return An optional containing the applicable price if found, or an empty optional if no applicable price is found.
      */
     Optional<Price> findApplicablePrice(Integer brandId, Integer productId, LocalDateTime date);

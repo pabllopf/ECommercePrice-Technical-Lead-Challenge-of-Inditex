@@ -5,7 +5,7 @@ import dev.pabllopf.ecommerceprice.domain.model.Price;
 /**
  * IUpdatePriceUseCase defines the contract for the use case of updating price-related data.
  * This interface provides the method for updating an existing price record in the system.
- *
+ * <p>
  * By implementing this interface, the system can expose the business logic for updating price records in a decoupled and maintainable way.
  * It abstracts the details of how a price update is performed, allowing for easier testing and separation of concerns between layers.
  */

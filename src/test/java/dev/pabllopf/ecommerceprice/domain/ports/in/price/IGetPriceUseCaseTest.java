@@ -34,7 +34,7 @@ public class IGetPriceUseCaseTest {
     @Test
     public void testFindPriceById() {
         Long id = 1L;
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
 
         when(getPriceUseCase.findPriceById(id)).thenReturn(Optional.of(price));
 
@@ -57,7 +57,7 @@ public class IGetPriceUseCaseTest {
         Integer brandId = 1;
         Integer productId = 1;
         LocalDateTime date = LocalDateTime.now();
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
         when(getPriceUseCase.findApplicablePrice(brandId, productId, date)).thenReturn(Optional.of(price));
 
         Optional<Price> foundPrice = getPriceUseCase.findApplicablePrice(brandId, productId, date);

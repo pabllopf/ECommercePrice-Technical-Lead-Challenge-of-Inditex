@@ -25,7 +25,7 @@ public class ICreatePriceUseCaseTest {
 
     @Test
     public void testCreatePriceSuccess() {
-        Price price = new Price( 1L, 1, LocalDateTime.now(), LocalDateTime.now(), 1, 1, 1, new BigDecimal(1), "USD");
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 1, 1, 1, new BigDecimal(1), "USD");
 
         when(createPriceUseCase.createPrice(price)).thenReturn(price);
 

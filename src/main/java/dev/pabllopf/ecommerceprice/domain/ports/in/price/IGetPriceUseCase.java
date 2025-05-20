@@ -10,7 +10,7 @@ import java.util.Optional;
  * IGetPriceUseCase defines the contract for the use case of retrieving price-related data.
  * This interface provides methods for accessing prices in the system, allowing for various operations such as
  * fetching all prices, finding a price by ID, and retrieving the applicable price for a specific product and brand at a given time.
- *
+ * <p>
  * By implementing this interface, the system can expose business logic for retrieving prices in a decoupled and maintainable way.
  * It abstracts the details of how prices are retrieved, allowing for easier testing and separation of concerns between layers.
  */
@@ -39,9 +39,9 @@ public interface IGetPriceUseCase {
      * This method returns an Optional of Price. If an applicable price is found for the given brand, product, and date, it is returned.
      * If no applicable price is found, an empty Optional is returned.
      *
-     * @param brandId The ID of the brand for which the price is being retrieved.
+     * @param brandId   The ID of the brand for which the price is being retrieved.
      * @param productId The ID of the product for which the price is being retrieved.
-     * @param date The date when the price is applicable.
+     * @param date      The date when the price is applicable.
      * @return An Optional containing the applicable Price if found, or an empty Optional if no applicable price is found.
      */
     Optional<Price> findApplicablePrice(Integer brandId, Integer productId, LocalDateTime date);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * AuthenticateService is the service class that acts as an entry point for user authentication.
  * It implements the IAuthenticateUseCase interface and delegates the authentication task
  * to the underlying use case logic.
- *
+ * <p>
  * This class provides an abstraction layer between the controller and the use case, ensuring that
  * the authentication logic is separated from the web layer.
  */

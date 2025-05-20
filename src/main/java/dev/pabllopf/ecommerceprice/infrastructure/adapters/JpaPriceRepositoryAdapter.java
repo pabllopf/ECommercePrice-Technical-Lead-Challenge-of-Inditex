@@ -41,9 +41,9 @@ public class JpaPriceRepositoryAdapter implements IPriceRepositoryPort {
      * It fetches the PriceEntity that matches the provided criteria,
      * and maps it to the domain model Price.
      *
-     * @param brandId The ID of the brand to which the price is associated.
+     * @param brandId   The ID of the brand to which the price is associated.
      * @param productId The ID of the product for which the price is applicable.
-     * @param date The date when the price is applicable.
+     * @param date      The date when the price is applicable.
      * @return An Optional containing the applicable price, or an empty Optional if no price is found.
      */
     @Override

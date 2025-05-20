@@ -30,18 +30,18 @@ class JpaPriceRepositoryAdapterTest {
         MockitoAnnotations.initMocks(this);
     }
 
-  @Test
-  void testSave() {
-      Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
-      PriceEntity priceEntity = PriceEntity.fromDomain(price);
+    @Test
+    void testSave() {
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
+        PriceEntity priceEntity = PriceEntity.fromDomain(price);
 
-      when(jpaPriceRepository.save(any(PriceEntity.class))).thenReturn(priceEntity);
+        when(jpaPriceRepository.save(any(PriceEntity.class))).thenReturn(priceEntity);
 
-      Price savedPrice = jpaPriceRepositoryAdapter.save(price);
+        Price savedPrice = jpaPriceRepositoryAdapter.save(price);
 
-      assertNotNull(savedPrice);
-      assertEquals(price.getId(), savedPrice.getId());
-  }
+        assertNotNull(savedPrice);
+        assertEquals(price.getId(), savedPrice.getId());
+    }
 
     @Test
     void testFindApplicablePrice() {

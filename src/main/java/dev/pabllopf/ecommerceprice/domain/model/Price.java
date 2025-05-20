@@ -15,31 +15,49 @@ import java.time.LocalDateTime;
 @Getter
 public class Price {
 
-    /** Unique identifier for the price record. */
+    /**
+     * Unique identifier for the price record.
+     */
     private Long id;
 
-    /** Identifier for the brand associated with this price. */
+    /**
+     * Identifier for the brand associated with this price.
+     */
     private Integer brandId;
 
-    /** Start date and time when the price becomes effective. */
+    /**
+     * Start date and time when the price becomes effective.
+     */
     private LocalDateTime startDate;
 
-    /** End date and time when the price is no longer valid. */
+    /**
+     * End date and time when the price is no longer valid.
+     */
     private LocalDateTime endDate;
 
-    /** Identifier for the price list. */
+    /**
+     * Identifier for the price list.
+     */
     private Integer priceList;
 
-    /** Identifier for the product this price applies to. */
+    /**
+     * Identifier for the product this price applies to.
+     */
     private Integer productId;
 
-    /** Priority of the price in case multiple prices overlap. Higher priority takes precedence. */
+    /**
+     * Priority of the price in case multiple prices overlap. Higher priority takes precedence.
+     */
     private Integer priority;
 
-    /** Price value for the product. */
+    /**
+     * Price value for the product.
+     */
     private BigDecimal price;
 
-    /** Currency in which the price is expressed (e.g., "USD", "EUR"). */
+    /**
+     * Currency in which the price is expressed (e.g., "USD", "EUR").
+     */
     private String currency;
 
     /**

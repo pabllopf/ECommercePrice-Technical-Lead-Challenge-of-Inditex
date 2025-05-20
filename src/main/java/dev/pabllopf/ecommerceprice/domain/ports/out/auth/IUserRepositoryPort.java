@@ -9,7 +9,7 @@ import java.util.Optional;
  * in the infrastructure layer. It is used to fetch user-related data, specifically
  * to find a user by their username. This interface is part of the port-driven architecture,
  * ensuring that the application's business logic can remain decoupled from the persistence details.
- *
+ * <p>
  * The methods in this interface are expected to be implemented by the infrastructure layer,
  * which may interact with databases or other data sources.
  */
@@ -17,7 +17,7 @@ public interface IUserRepositoryPort {
 
     /**
      * Finds a user by their username.
-     *
+     * <p>
      * This method will query the underlying data store (e.g., a database) for a user
      * with the given username. If the user exists, the method returns an Optional
      * containing the User object. If no user is found with the provided username,

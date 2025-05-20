@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 class AuthControllerTest {
 
     private MockMvc mockMvc;
@@ -38,8 +39,8 @@ class AuthControllerTest {
         when(authenticateService.authenticate("user1", "user1")).thenReturn("mocked-jwt-token");
 
         mockMvc.perform(post("/api/auth/login")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"username\": \"user1\", \"password\": \"user1\"}"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"username\": \"user1\", \"password\": \"user1\"}"))
                 .andExpect(status().isOk());
     }
 }

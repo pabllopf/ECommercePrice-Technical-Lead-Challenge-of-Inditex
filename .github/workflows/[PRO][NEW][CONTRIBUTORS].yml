@@ -3,11 +3,11 @@ name: '[PRO][NEW][CONTRIBUTORS]'
 on:
   # Trigger the workflow when a new issue is opened
   issues:
-    types: [opened]
+    types: [ opened ]
 
   # Trigger the workflow when a new pull request is opened (even from forks)
   pull_request_target:
-    types: [opened]
+    types: [ opened ]
 
 jobs:
   welcome-new-contributor:

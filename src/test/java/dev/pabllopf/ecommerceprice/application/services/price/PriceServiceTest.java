@@ -41,6 +41,7 @@ public class PriceServiceTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
+
     @Test
     public void testCreatePrice() {
         Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");

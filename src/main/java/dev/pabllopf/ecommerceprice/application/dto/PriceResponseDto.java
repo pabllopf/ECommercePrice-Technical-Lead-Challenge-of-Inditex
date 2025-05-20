@@ -26,11 +26,11 @@ public class PriceResponseDto {
      * Constructor to initialize the PriceResponseDto with all the necessary data.
      *
      * @param productId The ID of the product.
-     * @param brandId The ID of the brand.
+     * @param brandId   The ID of the brand.
      * @param priceList The ID of the price list.
      * @param startDate The start date of the price validity period.
-     * @param endDate The end date of the price validity period.
-     * @param price The price of the product.
+     * @param endDate   The end date of the price validity period.
+     * @param price     The price of the product.
      */
     public PriceResponseDto(Integer productId, Integer brandId, Integer priceList,
                             LocalDateTime startDate, LocalDateTime endDate, BigDecimal price) {

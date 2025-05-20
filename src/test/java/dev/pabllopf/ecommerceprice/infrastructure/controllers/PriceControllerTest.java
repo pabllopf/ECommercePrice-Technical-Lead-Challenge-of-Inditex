@@ -43,7 +43,7 @@ class PriceControllerTest {
         when(priceService.findAllPrices()).thenReturn(Collections.singletonList(price));
 
         mockMvc.perform(get("/api/prices/all")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].productId").value(1));
     }
@@ -54,7 +54,7 @@ class PriceControllerTest {
         when(priceService.findPriceById(1L)).thenReturn(Optional.of(price));
 
         mockMvc.perform(get("/api/prices/1")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(1));
     }
@@ -66,10 +66,10 @@ class PriceControllerTest {
         when(priceService.findApplicablePrice(1, 1, LocalDateTime.parse("2020-06-14T10:00:00"))).thenReturn(Optional.of(price));
 
         mockMvc.perform(get("/api/prices/applicable")
-                .param("brandId", "1")
-                .param("productId", "1")
-                .param("date", "2020-06-14T10:00:00")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .param("brandId", "1")
+                        .param("productId", "1")
+                        .param("date", "2020-06-14T10:00:00")
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(1));
     }
@@ -79,8 +79,8 @@ class PriceControllerTest {
         Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now().plusDays(1), 1, 1, 0, BigDecimal.valueOf(100), "USD");
 
         mockMvc.perform(put("/api/prices")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\": 1, \"brandId\": 1, \"productId\": 1, \"priceList\": 1, \"startDate\": \"2020-06-14T00:00:00\", \"endDate\": \"2020-12-31T23:59:59\", \"priority\": 0, \"price\": 100, \"currency\": \"USD\"}"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"id\": 1, \"brandId\": 1, \"productId\": 1, \"priceList\": 1, \"startDate\": \"2020-06-14T00:00:00\", \"endDate\": \"2020-12-31T23:59:59\", \"priority\": 0, \"price\": 100, \"currency\": \"USD\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(1));
     }
@@ -88,7 +88,7 @@ class PriceControllerTest {
     @Test
     void testDeletePrice() throws Exception {
         mockMvc.perform(delete("/api/prices/1")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Price deleted successfully."));
     }

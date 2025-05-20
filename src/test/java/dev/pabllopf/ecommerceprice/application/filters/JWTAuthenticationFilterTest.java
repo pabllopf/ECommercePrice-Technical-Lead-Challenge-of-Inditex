@@ -16,33 +16,33 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
-    public class JWTAuthenticationFilterTest {
+public class JWTAuthenticationFilterTest {
 
-        @InjectMocks
-        private JWTAuthenticationFilter jwtAuthenticationFilter;
+    @InjectMocks
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
 
-        @Mock
-        private HttpServletRequest request;
+    @Mock
+    private HttpServletRequest request;
 
-        @Mock
-        private HttpServletResponse response;
+    @Mock
+    private HttpServletResponse response;
 
-        private FilterChain filterChain;
+    private FilterChain filterChain;
 
-        @BeforeEach
-        public void setUp() {
-            MockitoAnnotations.openMocks(this);
-            filterChain = mock(FilterChain.class);
-        }
-
-
-        @Test
-        public void testDoFilterInternalWithoutAuthHeader() throws ServletException, IOException {
-            when(request.getHeader("Authorization")).thenReturn(null);
-
-            jwtAuthenticationFilter.doFilterInternal(request, response, filterChain);
-
-            verify(filterChain).doFilter(request, response);
-            assertNull(SecurityContextHolder.getContext().getAuthentication());
-        }
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        filterChain = mock(FilterChain.class);
     }
+
+
+    @Test
+    public void testDoFilterInternalWithoutAuthHeader() throws ServletException, IOException {
+        when(request.getHeader("Authorization")).thenReturn(null);
+
+        jwtAuthenticationFilter.doFilterInternal(request, response, filterChain);
+
+        verify(filterChain).doFilter(request, response);
+        assertNull(SecurityContextHolder.getContext().getAuthentication());
+    }
+}

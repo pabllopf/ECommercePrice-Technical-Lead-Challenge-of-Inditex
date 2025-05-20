@@ -16,36 +16,36 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-        class SecurityConfigTest {
+class SecurityConfigTest {
 
-            @Mock
-            private JWTAuthenticationFilter jwtAuthenticationFilter;
+    @Mock
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
 
-            @Mock
-            private AuthenticationConfiguration authConfig;
+    @Mock
+    private AuthenticationConfiguration authConfig;
 
-            @InjectMocks
-            private SecurityConfig securityConfig;
+    @InjectMocks
+    private SecurityConfig securityConfig;
 
-            @BeforeEach
-            void setUp() {
-                MockitoAnnotations.openMocks(this);
-            }
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
-            void testSecurityFilterChain() throws Exception {
-                HttpSecurity http = mock(HttpSecurity.class);
-                SecurityFilterChain securityFilterChain = securityConfig.securityFilterChain(http);
-                assertNotNull(securityFilterChain);
-                verify(http, times(1)).csrf(any());
-                verify(http, times(1)).headers(any());
-                verify(http, times(1)).authorizeHttpRequests(any());
-                verify(http, times(1)).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-            }
+    void testSecurityFilterChain() throws Exception {
+        HttpSecurity http = mock(HttpSecurity.class);
+        SecurityFilterChain securityFilterChain = securityConfig.securityFilterChain(http);
+        assertNotNull(securityFilterChain);
+        verify(http, times(1)).csrf(any());
+        verify(http, times(1)).headers(any());
+        verify(http, times(1)).authorizeHttpRequests(any());
+        verify(http, times(1)).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
 
-            @Test
-            void testPasswordEncoder() {
-                PasswordEncoder passwordEncoder = securityConfig.passwordEncoder();
-                assertNotNull(passwordEncoder);
-                assert(passwordEncoder instanceof BCryptPasswordEncoder);
-            }
-        }
+    @Test
+    void testPasswordEncoder() {
+        PasswordEncoder passwordEncoder = securityConfig.passwordEncoder();
+        assertNotNull(passwordEncoder);
+        assert (passwordEncoder instanceof BCryptPasswordEncoder);
+    }
+}

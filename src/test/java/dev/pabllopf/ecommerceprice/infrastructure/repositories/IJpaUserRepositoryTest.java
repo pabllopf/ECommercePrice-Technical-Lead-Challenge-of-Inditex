@@ -15,23 +15,23 @@ class IJpaUserRepositoryTest {
     @Autowired
     private IJpaUserRepository jpaUserRepository;
 
- @Test
- void testFindByUsername() {
-     // Given
-     String username = "user5";
-     UserEntity userEntity = new UserEntity();
-     userEntity.setUsername(username);
-     userEntity.setPassword("user1");
-     userEntity.setRole("USER"); // Set a non-null value for the role
-     jpaUserRepository.save(userEntity);
+    @Test
+    void testFindByUsername() {
+        // Given
+        String username = "user5";
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(username);
+        userEntity.setPassword("user1");
+        userEntity.setRole("USER"); // Set a non-null value for the role
+        jpaUserRepository.save(userEntity);
 
-     // When
-     Optional<UserEntity> result = jpaUserRepository.findByUsername(username);
+        // When
+        Optional<UserEntity> result = jpaUserRepository.findByUsername(username);
 
-     // Then
-     assertThat(result).isPresent();
-     assertThat(result.get().getUsername()).isEqualTo(username);
- }
+        // Then
+        assertThat(result).isPresent();
+        assertThat(result.get().getUsername()).isEqualTo(username);
+    }
 
     @Test
     void testFindByUsername_NotFound() {

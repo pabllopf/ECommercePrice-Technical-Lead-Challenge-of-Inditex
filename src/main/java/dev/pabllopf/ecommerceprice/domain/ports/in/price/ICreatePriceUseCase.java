@@ -6,7 +6,7 @@ import dev.pabllopf.ecommerceprice.domain.model.Price;
  * ICreatePriceUseCase defines the contract for the use case of creating a new price record.
  * This interface is part of the domain layer and encapsulates the logic required to create a new price entry.
  * It serves as the entry point for the application layer to interact with the core business logic related to price creation.
- *
+ * <p>
  * This interface ensures that the logic for creating a price is decoupled from the specific infrastructure
  * or database-related operations, making the business logic easier to test and maintain.
  */

@@ -84,16 +84,6 @@ public class PriceEntity {
     private String currency;
 
     /**
-     * Converts this entity to its corresponding domain model.
-     * The domain model is used in the application logic and service layer.
-     *
-     * @return A Price object representing the entity data.
-     */
-    public Price toDomain() {
-        return new Price(id, brandId, startDate, endDate, priceList, productId, priority, price, currency);
-    }
-
-    /**
      * Converts a domain model (Price) to a PriceEntity for persistence in the database.
      *
      * @param price The domain model to be converted.
@@ -111,5 +101,15 @@ public class PriceEntity {
         entity.setPrice(price.getPrice());
         entity.setCurrency(price.getCurrency());
         return entity;
+    }
+
+    /**
+     * Converts this entity to its corresponding domain model.
+     * The domain model is used in the application logic and service layer.
+     *
+     * @return A Price object representing the entity data.
+     */
+    public Price toDomain() {
+        return new Price(id, brandId, startDate, endDate, priceList, productId, priority, price, currency);
     }
 }

@@ -26,7 +26,7 @@ public class IPriceRepositoryPortTest {
 
     @Test
     public void testSave() {
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
         when(priceRepositoryPort.save(price)).thenReturn(price);
 
         Price savedPrice = priceRepositoryPort.save(price);
@@ -39,8 +39,8 @@ public class IPriceRepositoryPortTest {
         Integer brandId = 1;
         Integer productId = 1;
         LocalDateTime date = LocalDateTime.now();
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
-        
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
+
         when(priceRepositoryPort.findApplicablePrice(brandId, productId, date)).thenReturn(Optional.of(price));
 
         Optional<Price> foundPrice = priceRepositoryPort.findApplicablePrice(brandId, productId, date);
@@ -51,8 +51,8 @@ public class IPriceRepositoryPortTest {
     @Test
     public void testFindById() {
         Long id = 1L;
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
-        
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
+
         when(priceRepositoryPort.findById(id)).thenReturn(Optional.of(price));
 
         Optional<Price> foundPrice = priceRepositoryPort.findById(id);
@@ -62,8 +62,8 @@ public class IPriceRepositoryPortTest {
 
     @Test
     public void testFindAll() {
-        List<Price> prices = List.of(new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD")
-        , new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD"));
+        List<Price> prices = List.of(new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD")
+                , new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD"));
         when(priceRepositoryPort.findAll()).thenReturn(prices);
 
         List<Price> foundPrices = priceRepositoryPort.findAll();
@@ -73,8 +73,8 @@ public class IPriceRepositoryPortTest {
 
     @Test
     public void testUpdate() {
-        Price price = new Price(1L, 1,  LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2,new BigDecimal(2),"USD");
-        
+        Price price = new Price(1L, 1, LocalDateTime.now(), LocalDateTime.now(), 100, 2, 2, new BigDecimal(2), "USD");
+
         when(priceRepositoryPort.update(price)).thenReturn(Optional.of(price));
 
         Optional<Price> updatedPrice = priceRepositoryPort.update(price);

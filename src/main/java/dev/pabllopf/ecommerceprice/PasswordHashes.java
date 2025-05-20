@@ -14,7 +14,7 @@ public class PasswordHashes {
      * The main method serves as the entry point for this utility class.
      * It creates an instance of the BCryptPasswordEncoder and uses it to generate hashed passwords
      * for various user roles such as "user1", "user2", "admin", and "superadmin".
-     *
+     * <p>
      * The hashed passwords generated here can be used for user authentication within the system.
      *
      * @param args Command-line arguments, not used in this case.

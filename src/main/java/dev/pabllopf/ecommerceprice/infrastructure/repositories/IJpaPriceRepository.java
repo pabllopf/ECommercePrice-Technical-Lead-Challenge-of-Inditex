@@ -18,9 +18,9 @@ public interface IJpaPriceRepository extends JpaRepository<PriceEntity, Long> {
      * Finds the applicable price for a specific brand, product, and date.
      * This method searches the database to get the applicable price based on priority and date range.
      *
-     * @param brandId The ID of the brand.
+     * @param brandId   The ID of the brand.
      * @param productId The ID of the product.
-     * @param date The date for which the price needs to be found.
+     * @param date      The date for which the price needs to be found.
      * @return An {@link Optional} containing the {@link PriceEntity} if an applicable price is found, or {@link Optional#empty()} if not.
      */
     @Query("SELECT p FROM PriceEntity p " +
