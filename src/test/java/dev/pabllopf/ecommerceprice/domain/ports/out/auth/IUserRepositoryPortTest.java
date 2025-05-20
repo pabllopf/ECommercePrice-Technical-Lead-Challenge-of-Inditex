@@ -3,7 +3,6 @@ package dev.pabllopf.ecommerceprice.domain.ports.out.auth;
 import dev.pabllopf.ecommerceprice.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 

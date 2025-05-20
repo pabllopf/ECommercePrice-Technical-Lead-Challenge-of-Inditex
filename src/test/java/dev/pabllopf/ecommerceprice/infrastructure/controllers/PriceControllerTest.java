@@ -1,6 +1,5 @@
 package dev.pabllopf.ecommerceprice.infrastructure.controllers;
 
-import dev.pabllopf.ecommerceprice.application.dto.PriceResponseDto;
 import dev.pabllopf.ecommerceprice.application.services.price.PriceService;
 import dev.pabllopf.ecommerceprice.domain.model.Price;
 import org.junit.jupiter.api.BeforeEach;

@@ -2,13 +2,11 @@ package dev.pabllopf.ecommerceprice.domain.ports.in.price;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
 
 public class IDeletePriceUseCaseTest {
 

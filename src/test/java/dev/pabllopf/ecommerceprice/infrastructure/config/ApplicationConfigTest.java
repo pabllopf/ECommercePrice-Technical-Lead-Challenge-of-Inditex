@@ -6,10 +6,8 @@ import dev.pabllopf.ecommerceprice.domain.ports.out.auth.IAuthenticatePort;
 import dev.pabllopf.ecommerceprice.domain.ports.out.auth.ITokenProviderPort;
 import dev.pabllopf.ecommerceprice.domain.ports.out.auth.IUserRepositoryPort;
 import dev.pabllopf.ecommerceprice.domain.ports.out.price.IPriceRepositoryPort;
-import dev.pabllopf.ecommerceprice.infrastructure.adapters.AuthenticateAdapter;
 import dev.pabllopf.ecommerceprice.infrastructure.adapters.JpaPriceRepositoryAdapter;
 import dev.pabllopf.ecommerceprice.infrastructure.adapters.JpaUserRepositoryAdapter;
-import dev.pabllopf.ecommerceprice.infrastructure.adapters.JwtTokenAdapter;
 import dev.pabllopf.ecommerceprice.infrastructure.repositories.IJpaPriceRepository;
 import dev.pabllopf.ecommerceprice.infrastructure.repositories.IJpaUserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +18,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 
 class ApplicationConfigTest {
 

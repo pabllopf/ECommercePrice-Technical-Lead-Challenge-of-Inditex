@@ -1,12 +1,12 @@
 package dev.pabllopf.ecommerceprice.infrastructure.adapters;
 
-import dev.pabllopf.ecommerceprice.domain.ports.out.auth.ITokenProviderPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class JwtTokenAdapterTest {
 

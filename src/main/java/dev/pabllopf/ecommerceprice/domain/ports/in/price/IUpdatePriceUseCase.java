@@ -1,7 +1,6 @@
 package dev.pabllopf.ecommerceprice.domain.ports.in.price;
 
 import dev.pabllopf.ecommerceprice.domain.model.Price;
-import java.math.BigDecimal;
 
 /**
  * IUpdatePriceUseCase defines the contract for the use case of updating price-related data.
