@@ -162,7 +162,7 @@ public class PriceController {
             @ApiResponse(responseCode = "201", description = "Price created successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid price data", content = @Content)
     })
-    public PriceResponseDto createPrice(@RequestBody Price price) {
+    public PriceResponseDto createPrice(@org.springframework.web.bind.annotation.RequestBody Price price) {
         Price createdPrice = priceService.createPrice(price);
 
         return new PriceResponseDto(
@@ -207,7 +207,7 @@ public class PriceController {
             @ApiResponse(responseCode = "200", description = "Price updated successfully"),
             @ApiResponse(responseCode = "404", description = "Price not found", content = @Content)
     })
-    public PriceResponseDto updatePrice(@RequestBody Price price) {
+    public PriceResponseDto updatePrice(@org.springframework.web.bind.annotation.RequestBody Price price) {
         priceService.updatePrice(price);
 
         return new PriceResponseDto(

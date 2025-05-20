@@ -55,7 +55,7 @@ public class AuthController {
             @ApiResponse(responseCode = "200", description = "Login successful"),
             @ApiResponse(responseCode = "403", description = "Invalid username or password")
     })
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<String> login(@org.springframework.web.bind.annotation.RequestBody LoginRequest loginRequest){
         // The username and password from the login request are passed to the authenticate service
         String token = authenticateUserUseCase.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
 

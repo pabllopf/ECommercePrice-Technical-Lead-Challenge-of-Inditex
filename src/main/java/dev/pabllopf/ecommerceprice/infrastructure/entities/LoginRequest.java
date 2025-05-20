@@ -1,5 +1,6 @@
 package dev.pabllopf.ecommerceprice.infrastructure.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@Data
 public class LoginRequest {
 
     /**
