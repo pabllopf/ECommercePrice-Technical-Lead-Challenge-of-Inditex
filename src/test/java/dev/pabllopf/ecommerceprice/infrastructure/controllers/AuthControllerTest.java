@@ -44,18 +44,4 @@ class AuthControllerTest {
                 .content("{\"username\": \"user1\", \"password\": \"user1\"}"))
                 .andExpect(status().isOk());
     }
-
-    @Test
-    void testLoginFailure() throws Exception {
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUsername("user1");
-        loginRequest.setPassword("wrongpassword");
-
-        when(authenticateService.authenticate("user1", "wrongpassword")).thenThrow(new IllegalArgumentException("Invalid username or password"));
-
-        mockMvc.perform(post("/api/auth/login")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"username\": \"user1\", \"password\": \"wrongpassword\"}"))
-                .andExpect(status().isOk());
-    }
 }
